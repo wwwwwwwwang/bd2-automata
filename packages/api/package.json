@@ -1,0 +1,24 @@
+{
+  "name": "@bd2-automata/api",
+  "version": "1.0.0",
+  "private": true,
+  "main": "src/index.ts",
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev"
+  },
+  "dependencies": {
+    "@bd2-automata/shared": "workspace:*",
+    "@hono/zod-validator": "^0.2.1",
+    "bcryptjs": "^2.4.3",
+    "cron-parser": "^5.5.0",
+    "drizzle-orm": "^0.30.10",
+    "hono": "^4.12.0",
+    "resend": "^6.9.2"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240512.0",
+    "@types/bcryptjs": "^2.4.6",
+    "wrangler": "^3.57.0"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "bd2-automata-root",
+  "private": true,
+  "scripts": {
+    "preinstall": "npx only-allow pnpm"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.21.4",
+    "only-allow": "^1.2.1"
+  }
+}

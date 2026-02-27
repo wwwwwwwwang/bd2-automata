@@ -1,0 +1,17 @@
+name = "bd2-automata-consumer"
+main = "src/index.ts"
+compatibility_date = "2024-05-12"
+
+# 绑定 D1 数据库（与 API Worker 共享同一个数据库）
+[[d1_databases]]
+binding = "DB"
+database_name = "bd2-automata-db"
+database_id = "<YOUR_DATABASE_ID>"
+
+# 绑定 Consumer 自身，用于递归调用，以突破 Worker 30 秒的运行时间限制
+[[services]]
+binding = "SELF"
+service = "bd2-automata-consumer"
+
+# Secrets (通过 wrangler secret put 设置)
+# - RESEND_API_KEY: Resend 邮件服务 API 密钥

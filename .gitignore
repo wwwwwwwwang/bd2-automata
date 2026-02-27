@@ -1,0 +1,46 @@
+# Dependencies
+node_modules/
+
+# Build outputs and caches
+dist/
+build/
+.cache/
+.turbo/
+.next/
+coverage/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# IDE and system files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Local tooling artifacts
+.trae/
+.claude/
+
+# Historical reports and temporary assets
+*_Report.md
+admin_features.html
+task.html
+*架构方案*.html
+backup_schema_only.sql

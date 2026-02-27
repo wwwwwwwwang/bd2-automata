@@ -1,0 +1,19 @@
+{
+  "name": "@bd2-automata/consumer",
+  "version": "1.0.0",
+  "private": true,
+  "main": "src/index.ts",
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev"
+  },
+  "dependencies": {
+    "@bd2-automata/shared": "workspace:*",
+    "hono": "^4.3.7",
+    "resend": "^6.9.2"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240512.0",
+    "wrangler": "^3.57.0"
+  }
+}
