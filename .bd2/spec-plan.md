@@ -40,15 +40,18 @@
 ### Phase 1: ID 与 Schema 基线
 **目标**: 建立 string-first ID 处理基线，统一 DTO/表字段命名。
 
+> **更新 (2025-01-31)**: Snowflake ID 生成器原实现已移除（未被实际代码使用）。Action 2 标记为"待实施"状态。
+
 **Actions**:
 1. 替换 `parseId` 实现：移除 `Number()` 转换，改为 string 验证（regex/length）+ DB codec（`string <-> bigint/text`）。
-2. 集中 Snowflake ID 生成：创建 `generateId()` 辅助函数，所有 user/role/permission/log create service 调用。
+2. ⚠️ **待实施**: 集中 Snowflake ID 生成：创建 `generateId()` 辅助函数，所有 user/role/permission/log create service 调用。
 3. 对齐 shared schema 与 DTO 命名：`maxGameAccounts` vs `maxAccounts`，移除 insert/update payload 中的非列字段。
 4. 验证：单元测试覆盖 ID 验证边界（非数字、超长、负数）；集成测试确认所有 create 流程注入 Snowflake ID。
 
 **Gap 观察**:
 - 现有 `parseId` 使用 `Number` + safe-integer 检查，与 64 位策略冲突。
 - Create 流程未一致注入 Snowflake ID。
+- Snowflake ID 生成器需要重新实现（原实现已从代码库移除）。
 
 ---
 
