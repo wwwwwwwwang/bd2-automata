@@ -8,7 +8,12 @@ Successfully migrated all database entities to use SQLite auto-increment IDs con
 ## Changes Implemented
 
 ### 1. Schema Layer Updates (REQ-1)
-Updated 19 schema files to add `{ mode: 'number' }` configuration to all `integer('id').primaryKey()` definitions:
+Updated all 19 integer primary key schema files to add `{ mode: 'number' }` configuration to `integer('id').primaryKey()` definitions:
+
+**Note:** 3 additional tables use text primary keys and were not modified:
+- `distributed-locks` (text PK: lock_key)
+- `tasks` (text PK: UUID)
+- `cron-configs` (text PK: task_type)
 
 - `daily-attendance-logs.ts`
 - `dictionary-items.ts`
