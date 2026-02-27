@@ -6,7 +6,7 @@ import { REDEMPTION_STATUS } from '../../enums';
 
 // 礼包码兑换日志表（SQLite INTEGER 为 64 位，语义对齐 BIGINT）
 export const redemptionLogs = sqliteTable('automata_redemption_logs', {
-  id: integer('id').primaryKey(),
+  id: integer('id', { mode: 'number' }).primaryKey(),
   gameAccountId: integer('game_account_id').notNull().references(() => gameAccounts.id, { onDelete: 'cascade' }),
   giftCodeId: integer('gift_code_id').references(() => giftCodes.id, { onDelete: 'set null' }),
   codeUsed: text('code_used').notNull(),

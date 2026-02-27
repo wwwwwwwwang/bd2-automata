@@ -4,7 +4,7 @@ import { users } from './users';
 
 // 邮箱变更令牌表
 export const emailChangeTokens = sqliteTable('automata_email_change_tokens', {
-  id: integer('id').primaryKey(),
+  id: integer('id', { mode: 'number' }).primaryKey(),
   userId: integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
   oldEmail: text('old_email').notNull(),
   newEmail: text('new_email').notNull(),

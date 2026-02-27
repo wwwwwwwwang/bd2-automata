@@ -5,7 +5,7 @@ import { PROVIDER_TYPE } from '../../enums';
 
 // 游戏账号表
 export const gameAccounts = sqliteTable('automata_game_accounts', {
-  id: integer('id').primaryKey(),
+  id: integer('id', { mode: 'number' }).primaryKey(),
   userId: integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
   gameNickname: text('game_nickname').notNull().unique(),
   refreshToken: text('refresh_token').notNull(),

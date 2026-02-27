@@ -4,7 +4,7 @@ import { PERMISSION_TYPE } from '../../enums';
 
 // 权限表（SQLite INTEGER 为 64 位，语义对齐 BIGINT）
 export const permissions = sqliteTable('automata_permissions', {
-  id: integer('id').primaryKey(),
+  id: integer('id', { mode: 'number' }).primaryKey(),
   code: text('code').notNull().unique(),
   name: text('name').notNull(),
   type: text('type', { enum: PERMISSION_TYPE }).default('button'),

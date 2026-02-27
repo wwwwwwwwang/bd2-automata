@@ -6,7 +6,7 @@ import { LOG_STATUS } from '../../enums';
 
 // 任务执行日志表（SQLite INTEGER 为 64 位，语义对齐 BIGINT）
 export const logs = sqliteTable('automata_logs', {
-  id: integer('id').primaryKey(),
+  id: integer('id', { mode: 'number' }).primaryKey(),
   taskId: integer('task_id').references(() => tasks.id, { onDelete: 'set null' }),
   gameAccountId: integer('game_account_id').references(() => gameAccounts.id, { onDelete: 'cascade' }),
   status: text('status', { enum: LOG_STATUS }).notNull(),

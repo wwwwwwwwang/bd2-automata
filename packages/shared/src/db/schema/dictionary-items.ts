@@ -4,7 +4,7 @@ import { dictionaries } from './dictionary-types';
 
 // 字典数据项表
 export const dictionaryItems = sqliteTable('automata_dictionary_items', {
-  id: integer('id').primaryKey(),
+  id: integer('id', { mode: 'number' }).primaryKey(),
   dictionaryId: integer('dictionary_id').notNull().references(() => dictionaries.id, { onDelete: 'cascade' }),
   key: text('key').notNull(),
   value: text('value').notNull(),

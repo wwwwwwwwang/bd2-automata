@@ -5,7 +5,7 @@ import { ATTENDANCE_STATUS } from '../../enums';
 
 // 每周签到日志表（SQLite INTEGER 为 64 位，语义对齐 BIGINT）
 export const weeklyAttendanceLogs = sqliteTable('automata_weekly_attendance_logs', {
-  id: integer('id').primaryKey(),
+  id: integer('id', { mode: 'number' }).primaryKey(),
   gameAccountId: integer('game_account_id').notNull().references(() => gameAccounts.id, { onDelete: 'cascade' }),
   status: text('status', { enum: ATTENDANCE_STATUS }).notNull(),
   message: text('message'),

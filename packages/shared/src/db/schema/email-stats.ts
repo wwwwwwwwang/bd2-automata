@@ -3,7 +3,7 @@ import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
 
 // 邮件统计表
 export const emailStats = sqliteTable('automata_email_stats', {
-  id: integer('id').primaryKey(),
+  id: integer('id', { mode: 'number' }).primaryKey(),
   statDate: text('stat_date').notNull().unique(),
   totalSent: integer('total_sent').default(0),
   totalDelivered: integer('total_delivered').default(0),

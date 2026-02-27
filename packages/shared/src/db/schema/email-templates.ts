@@ -3,7 +3,7 @@ import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
 
 // 邮件模板表
 export const emailTemplates = sqliteTable('automata_email_templates', {
-  id: integer('id').primaryKey(),
+  id: integer('id', { mode: 'number' }).primaryKey(),
   name: text('name').notNull().unique(),
   displayName: text('display_name').notNull(),
   subject: text('subject').notNull(),

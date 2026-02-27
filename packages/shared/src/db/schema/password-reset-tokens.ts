@@ -4,7 +4,7 @@ import { users } from './users';
 
 // 密码重置令牌表
 export const passwordResetTokens = sqliteTable('automata_password_reset_tokens', {
-  id: integer('id').primaryKey(),
+  id: integer('id', { mode: 'number' }).primaryKey(),
   userId: integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
   token: text('token').notNull().unique(),
   expiresAt: text('expires_at').notNull(),

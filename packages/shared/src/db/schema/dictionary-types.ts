@@ -3,7 +3,7 @@ import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
 
 // 字典类型表
 export const dictionaries = sqliteTable('automata_dictionaries', {
-  id: integer('id').primaryKey(),
+  id: integer('id', { mode: 'number' }).primaryKey(),
   code: text('code').notNull().unique(),
   name: text('name').notNull(),
   description: text('description'),

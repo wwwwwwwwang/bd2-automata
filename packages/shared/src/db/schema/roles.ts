@@ -3,7 +3,7 @@ import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
 
 // 角色表（SQLite INTEGER 为 64 位，语义对齐 BIGINT）
 export const roles = sqliteTable('automata_roles', {
-  id: integer('id').primaryKey(),
+  id: integer('id', { mode: 'number' }).primaryKey(),
   name: text('name').notNull().unique(),
   description: text('description'),
   isActive: integer('is_active', { mode: 'boolean' }).default(true),

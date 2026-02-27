@@ -6,7 +6,7 @@ import { EMAIL_TYPE, EMAIL_QUEUE_STATUS } from '../../enums';
 
 // 邮件发送队列
 export const emailQueue = sqliteTable('automata_email_queue', {
-  id: integer('id').primaryKey(),
+  id: integer('id', { mode: 'number' }).primaryKey(),
   userId: integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
   recipientEmail: text('recipient_email').notNull(),
   subject: text('subject').notNull(),

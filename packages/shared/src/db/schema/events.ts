@@ -3,7 +3,7 @@ import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
 
 // 游戏活动日程表
 export const eventSchedules = sqliteTable('automata_event_schedules', {
-  id: integer('id').primaryKey(),
+  id: integer('id', { mode: 'number' }).primaryKey(),
   eventScheduleId: integer('event_schedule_id').notNull().unique(),
   startDate: text('start_date').notNull(),
   endDate: text('end_date').notNull(),

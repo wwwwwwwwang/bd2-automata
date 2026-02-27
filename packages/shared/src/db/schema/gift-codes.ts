@@ -3,7 +3,7 @@ import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
 
 // 全局礼包码表
 export const giftCodes = sqliteTable('automata_gift_codes', {
-  id: integer('id').primaryKey(),
+  id: integer('id', { mode: 'number' }).primaryKey(),
   code: text('code').notNull().unique(),
   rewardDesc: text('reward_desc'),
   isActive: integer('is_active', { mode: 'boolean' }).default(true),
