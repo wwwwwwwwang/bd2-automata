@@ -10,7 +10,9 @@ CREATE TABLE `automata_users` (
 	`email_verify_token_expires` integer,
 	`last_login_at` text,
 	`created_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
-	`updated_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL
+	`updated_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
+	`is_deleted` integer DEFAULT false NOT NULL,
+	`deleted_at` text
 );
 --> statement-breakpoint
 CREATE TABLE `automata_roles` (
@@ -19,7 +21,9 @@ CREATE TABLE `automata_roles` (
 	`description` text,
 	`is_active` integer DEFAULT true,
 	`created_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
-	`updated_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL
+	`updated_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
+	`is_deleted` integer DEFAULT false NOT NULL,
+	`deleted_at` text
 );
 --> statement-breakpoint
 CREATE TABLE `automata_permissions` (
@@ -35,7 +39,9 @@ CREATE TABLE `automata_permissions` (
 	`api_path` text,
 	`sort_order` integer DEFAULT 0,
 	`created_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
-	`updated_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL
+	`updated_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
+	`is_deleted` integer DEFAULT false NOT NULL,
+	`deleted_at` text
 );
 --> statement-breakpoint
 CREATE TABLE `cron_configs` (
@@ -52,7 +58,9 @@ CREATE TABLE `automata_dictionaries` (
 	`is_system` integer DEFAULT false,
 	`sort_order` integer DEFAULT 0,
 	`created_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
-	`updated_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL
+	`updated_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
+	`is_deleted` integer DEFAULT false NOT NULL,
+	`deleted_at` text
 );
 --> statement-breakpoint
 CREATE TABLE `automata_dictionary_items` (
@@ -66,6 +74,8 @@ CREATE TABLE `automata_dictionary_items` (
 	`is_default` integer DEFAULT false,
 	`created_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
 	`updated_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
+	`is_deleted` integer DEFAULT false NOT NULL,
+	`deleted_at` text,
 	FOREIGN KEY (`dictionary_id`) REFERENCES `automata_dictionaries`(`id`) ON UPDATE no action ON DELETE cascade
 );
 --> statement-breakpoint
@@ -101,7 +111,9 @@ CREATE TABLE `automata_gift_codes` (
 	`is_active` integer DEFAULT true,
 	`expired_at` text,
 	`created_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
-	`updated_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL
+	`updated_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
+	`is_deleted` integer DEFAULT false NOT NULL,
+	`deleted_at` text
 );
 --> statement-breakpoint
 CREATE TABLE `automata_event_schedules` (
@@ -113,7 +125,9 @@ CREATE TABLE `automata_event_schedules` (
 	`reward_info` text,
 	`popup_info` text,
 	`created_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
-	`updated_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL
+	`updated_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
+	`is_deleted` integer DEFAULT false NOT NULL,
+	`deleted_at` text
 );
 --> statement-breakpoint
 CREATE TABLE `automata_game_accounts` (
@@ -131,6 +145,8 @@ CREATE TABLE `automata_game_accounts` (
 	`provider_type` text DEFAULT 'GOOGLE',
 	`created_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
 	`updated_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
+	`is_deleted` integer DEFAULT false NOT NULL,
+	`deleted_at` text,
 	FOREIGN KEY (`user_id`) REFERENCES `automata_users`(`id`) ON UPDATE no action ON DELETE cascade
 );
 --> statement-breakpoint
@@ -189,21 +205,7 @@ CREATE TABLE `automata_event_participation_logs` (
 	FOREIGN KEY (`event_schedule_id`) REFERENCES `automata_event_schedules`(`id`) ON UPDATE no action ON DELETE set null
 );
 --> statement-breakpoint
-CREATE TABLE `automata_user_keys` (
-	`id` text PRIMARY KEY NOT NULL,
-	`user_id` text NOT NULL,
-	`hashed_password` text,
-	FOREIGN KEY (`user_id`) REFERENCES `automata_users`(`id`) ON UPDATE no action ON DELETE cascade
-);
---> statement-breakpoint
-CREATE TABLE `automata_user_sessions` (
-	`id` text PRIMARY KEY NOT NULL,
-	`user_id` text NOT NULL,
-	`active_expires` integer NOT NULL,
-	`idle_expires` integer NOT NULL,
-	FOREIGN KEY (`user_id`) REFERENCES `automata_users`(`id`) ON UPDATE no action ON DELETE cascade
-);
---> statement-breakpoint
+-- 说明：user_keys 和 user_sessions 表已从当前 schema 移除，因此初始迁移中不再创建这两张表
 CREATE TABLE `automata_distributed_locks` (
 	`lock_key` text PRIMARY KEY NOT NULL,
 	`locked_by` text NOT NULL,
@@ -256,7 +258,9 @@ CREATE TABLE `automata_email_templates` (
 	`available_vars` text,
 	`is_active` integer DEFAULT true,
 	`created_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
-	`updated_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL
+	`updated_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
+	`is_deleted` integer DEFAULT false NOT NULL,
+	`deleted_at` text
 );
 --> statement-breakpoint
 CREATE TABLE `automata_email_queue` (
@@ -268,6 +272,7 @@ CREATE TABLE `automata_email_queue` (
 	`email_type` text NOT NULL,
 	`template_id` integer,
 	`template_vars` text,
+	`resend_email_id` text,
 	`status` text DEFAULT 'pending',
 	`retry_count` integer DEFAULT 0,
 	`error_msg` text,
@@ -283,7 +288,10 @@ CREATE TABLE `automata_email_stats` (
 	`id` integer PRIMARY KEY NOT NULL,
 	`stat_date` text NOT NULL,
 	`total_sent` integer DEFAULT 0,
+	`total_delivered` integer DEFAULT 0,
 	`total_failed` integer DEFAULT 0,
+	`total_bounced` integer DEFAULT 0,
+	`total_complained` integer DEFAULT 0,
 	`total_pending` integer DEFAULT 0,
 	`password_reset_count` integer DEFAULT 0,
 	`token_expired_count` integer DEFAULT 0,
@@ -303,4 +311,5 @@ CREATE UNIQUE INDEX `automata_refresh_tokens_token_unique` ON `automata_refresh_
 CREATE UNIQUE INDEX `automata_password_reset_tokens_token_unique` ON `automata_password_reset_tokens` (`token`);--> statement-breakpoint
 CREATE UNIQUE INDEX `automata_email_change_tokens_token_unique` ON `automata_email_change_tokens` (`token`);--> statement-breakpoint
 CREATE UNIQUE INDEX `automata_email_templates_name_unique` ON `automata_email_templates` (`name`);--> statement-breakpoint
+CREATE INDEX `idx_email_queue_resend_email_id` ON `automata_email_queue` (`resend_email_id`);--> statement-breakpoint
 CREATE UNIQUE INDEX `automata_email_stats_stat_date_unique` ON `automata_email_stats` (`stat_date`);

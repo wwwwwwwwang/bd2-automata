@@ -23,7 +23,7 @@ function tableList(pageSize: number) {
 
 export default defineMock({
   // 表格数据列表
-  '/api/table/list': ({ query }) => {
+  '/api/table/page': ({ query }) => {
     const { page = 1, pageSize = 10, name } = query;
     const list = tableList(Number(pageSize));
     // 并非真实，只是为了模拟搜索结果

@@ -1,10 +1,11 @@
 import { Hono } from 'hono';
 import { Resend } from 'resend';
-import type { Env } from '../index';
-import { handleResendWebhook } from '../services/webhookService';
+import type { Env } from '../env';
+import { handleResendWebhook, isResendEmailStatusEvent } from '../services/webhookService';
+
 
 const webhooks = new Hono<{ Bindings: Env }>()
-  .post('/', async (c) => {
+  .post('/status', async (c) => {
     const payload = await c.req.text();
     const resend = new Resend(c.env.RESEND_API_KEY);
 
@@ -21,6 +22,10 @@ const webhooks = new Hono<{ Bindings: Env }>()
       });
     } catch {
       return c.json({ error: 'Invalid signature' }, 400);
+    }
+
+    if (!isResendEmailStatusEvent(event)) {
+      return c.json({ received: true }, 200);
     }
 
     await handleResendWebhook(c.env.DB, event);

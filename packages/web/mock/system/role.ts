@@ -29,7 +29,7 @@ const roleList = (pageSize) => {
 };
 
 export default defineMock({
-  '/api/role/list': ({ query }) => {
+  '/api/role/page': ({ query }) => {
     const { page = 1, pageSize = 10, name } = query;
     const list = roleList(Number(pageSize));
     // 并非真实，只是为了模拟搜索结果

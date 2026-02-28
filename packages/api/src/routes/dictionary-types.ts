@@ -1,12 +1,12 @@
 import { Hono } from 'hono';
 import { validate } from '../utils/validation';
 import { createDictionaryTypeSchema, updateDictionaryTypeSchema, paginationQuerySchema } from '@bd2-automata/shared';
-import type { Env } from '../index';
+import type { Env } from '../env';
 import { findDictionaryTypes, findDictionaryTypeById, createDictionaryType, updateDictionaryType, deleteDictionaryType } from '../services/dictionaryTypeService';
 import { success } from '../utils/response';
 
 const dictionaryTypes = new Hono<{ Bindings: Env }>()
-  .get('/', validate('query', paginationQuerySchema), async (c) => {
+  .get('/page', validate('query', paginationQuerySchema), async (c) => {
     const pagination = c.req.valid('query');
     return c.json(success(await findDictionaryTypes(c.env.DB, pagination)));
   })

@@ -14,6 +14,10 @@ export const emailStats = sqliteTable('automata_email_stats', {
   passwordResetCount: integer('password_reset_count').default(0),
   tokenExpiredCount: integer('token_expired_count').default(0),
   systemNotifyCount: integer('system_notify_count').default(0),
+  createdBy: integer('created_by').default(0),
+  updatedBy: integer('updated_by').default(0),
   createdAt: text('created_at').notNull().default(sql`(CURRENT_TIMESTAMP)`),
   updatedAt: text('updated_at').notNull().default(sql`(CURRENT_TIMESTAMP)`),
+  version: integer('version').default(0),
+  isDeleted: integer('is_deleted', { mode: 'boolean' }).notNull().default(false),
 });

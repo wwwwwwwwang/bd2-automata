@@ -2,7 +2,33 @@ import { getDb } from '../db/drizzle';
 import { and, eq, inArray, sql } from 'drizzle-orm';
 import { emailQueue, emailStats } from '@bd2-automata/shared';
 
-const EVENT_TO_STATUS: Record<string, string> = {
+export const RESEND_EMAIL_STATUS_EVENT_TYPES = [
+  'email.sent',
+  'email.delivered',
+  'email.bounced',
+  'email.complained',
+  'email.failed',
+] as const;
+
+export type ResendEmailStatusEvent = {
+  type: (typeof RESEND_EMAIL_STATUS_EVENT_TYPES)[number];
+  data: { email_id: string };
+};
+
+const RESEND_EMAIL_STATUS_EVENT_TYPE_SET = new Set<string>(RESEND_EMAIL_STATUS_EVENT_TYPES);
+
+export const isResendEmailStatusEvent = (event: unknown): event is ResendEmailStatusEvent => {
+  if (typeof event !== 'object' || event === null) return false;
+
+  const { type, data } = event as { type?: unknown; data?: unknown };
+  if (typeof type !== 'string' || !RESEND_EMAIL_STATUS_EVENT_TYPE_SET.has(type)) return false;
+  if (typeof data !== 'object' || data === null) return false;
+
+  const emailId = (data as { email_id?: unknown }).email_id;
+  return typeof emailId === 'string' && emailId.length > 0;
+};
+
+const EVENT_TO_STATUS: Record<ResendEmailStatusEvent['type'], string> = {
   'email.sent': 'sent',
   'email.delivered': 'delivered',
   'email.bounced': 'bounced',
@@ -21,10 +47,12 @@ const ALLOWED_FROM: Record<string, string[]> = {
 
 export const handleResendWebhook = async (
   d1: D1Database,
-  event: { type: string; data: { email_id: string } },
+  event: ResendEmailStatusEvent,
 ) => {
   const newStatus = EVENT_TO_STATUS[event.type];
   if (!newStatus) return;
+
+  const emailId = event.data.email_id;
 
   const allowedFrom = ALLOWED_FROM[newStatus];
   if (!allowedFrom) return;
@@ -37,7 +65,7 @@ export const handleResendWebhook = async (
     updatedAt: new Date().toISOString(),
   }).where(
     and(
-      eq(emailQueue.resendEmailId, event.data.email_id),
+      eq(emailQueue.resendEmailId, emailId),
       inArray(emailQueue.status, allowedFrom as any),
     ),
   ).returning({ id: emailQueue.id });

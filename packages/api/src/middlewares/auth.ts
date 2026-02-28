@@ -3,13 +3,25 @@ import { createMiddleware } from 'hono/factory';
 import { HTTPException } from 'hono/http-exception';
 import { verify } from 'hono/jwt';
 import { getUserPermissions } from '../services/permissionService';
-import type { Env } from '../index';
+import type { Env } from '../env';
 import { permissions } from '@bd2-automata/shared';
+import { buildPermissionCacheKey, getAuthzCacheVersion } from '../utils/authz-cache';
 
 // ===================================================================
 // 0. 缓存常量
 // ===================================================================
 const CACHE_TTL_SECONDS = 60 * 5; // 缓存5分钟
+
+export const normalizePath = (path: string): string => {
+  const trimmed = path.trim();
+  if (!trimmed || trimmed === '/') return '/';
+  const collapsed = trimmed.replace(/\/+/g, '/');
+  return collapsed.length > 1 ? collapsed.replace(/\/+$/, '') : collapsed;
+};
+
+export const resolvePermissionPath = (requestUrl: string, routePath?: string): string => {
+  return normalizePath(routePath || new URL(requestUrl).pathname);
+};
 
 // 通过模块增强，为 Hono 的上下文类型添加 user 属性
 declare module 'hono' {
@@ -64,7 +76,8 @@ export const rbacMiddleware = createMiddleware<{ Bindings: Env }>(async (c, next
   }
 
   let userPermissions: (typeof permissions.$inferSelect)[];
-  const cacheKey = `permissions:${user.id}`;
+  const cacheVersion = await getAuthzCacheVersion(c.env.PERMISSION_CACHE);
+  const cacheKey = buildPermissionCacheKey(user.id, cacheVersion);
 
   // 从 KV 缓存中获取权限
   const cachedPermissions = await c.env.PERMISSION_CACHE.get(cacheKey, 'json');
@@ -80,22 +93,18 @@ export const rbacMiddleware = createMiddleware<{ Bindings: Env }>(async (c, next
   }
 
   const reqMethod = c.req.method;
-  const reqPath = new URL(c.req.url).pathname;
+  const routePath = (c.req as unknown as { routePath?: string }).routePath;
+  const reqPath = resolvePermissionPath(c.req.url, routePath);
 
-  const hasPermission = userPermissions.some(permission => {
-    if (permission.httpMethod && permission.apiPath) {
-      if (permission.httpMethod !== reqMethod) return false;
-
-      // 逐段比较路径，:param 占位符匹配任意非空段
-      const permSegments = permission.apiPath.split('/');
-      const reqSegments = reqPath.split('/');
-      if (permSegments.length !== reqSegments.length) return false;
-
-      return permSegments.every((seg, i) =>
-        seg.startsWith(':') ? reqSegments[i].length > 0 : seg === reqSegments[i],
-      );
+  const hasPermission = userPermissions.some((permission) => {
+    if (!permission.httpMethod || !permission.apiPath) {
+      return false;
     }
-    return false;
+
+    const permissionMethod = permission.httpMethod.trim().toUpperCase();
+    const permissionPath = normalizePath(permission.apiPath);
+
+    return permissionMethod === reqMethod && permissionPath === reqPath;
   });
 
   if (!hasPermission) {

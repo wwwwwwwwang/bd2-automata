@@ -141,7 +141,7 @@ export const eventParticipationLogsRelations = relations(eventParticipationLogs,
   }),
   eventSchedule: one(eventSchedules, {
     fields: [eventParticipationLogs.eventScheduleId],
-    references: [eventSchedules.id],
+    references: [eventSchedules.eventScheduleId],
   }),
 }));
 

@@ -1,5 +1,5 @@
-import { BaseTaskHandler } from './index';
-import type { Env } from '../../index';
+import { BaseTaskHandler } from './types';
+import type { Env } from '../../env';
 import { tasks } from '@bd2-automata/shared';
 
 type Task = typeof tasks.$inferSelect;

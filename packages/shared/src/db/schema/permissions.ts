@@ -1,5 +1,5 @@
 import { sql } from 'drizzle-orm';
-import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
+import { sqliteTable, text, integer, foreignKey } from 'drizzle-orm/sqlite-core';
 import { PERMISSION_TYPE } from '../../enums';
 
 // 权限表（SQLite INTEGER 为 64 位，语义对齐 BIGINT）
@@ -19,4 +19,10 @@ export const permissions = sqliteTable('automata_permissions', {
   updatedAt: text('updated_at').notNull().default(sql`(CURRENT_TIMESTAMP)`),
   isDeleted: integer('is_deleted', { mode: 'boolean' }).notNull().default(false),
   deletedAt: text('deleted_at'),
-});
+}, (table) => ({
+  parentFk: foreignKey({
+    columns: [table.parentId],
+    foreignColumns: [table.id],
+  }).onDelete('cascade'),
+}));
+

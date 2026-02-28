@@ -1,6 +1,6 @@
 import { createMiddleware } from 'hono/factory';
 import { HTTPException } from 'hono/http-exception';
-import type { Env } from '../index';
+import type { Env } from '../env';
 
 /**
  * 基于 KV 的滑动窗口速率限制中间件。

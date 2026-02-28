@@ -1,25 +1,26 @@
 import { sql } from 'drizzle-orm';
 import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
-import { TASK_STATUS } from '../../enums';
+import { gameAccounts } from './game-accounts';
 
-// 异步任务队列 - 根据 task.html 设计方案进行增强
+// 异步任务队列 - 与 backup_schema_only.sql 对齐
 export const tasks = sqliteTable('task_queue', {
-  id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
+  id: integer('id').primaryKey({ autoIncrement: true }),
   taskType: text('task_type').notNull(),
-  payload: text('payload', { mode: 'json' }),
-  status: text('status', {
-    enum: TASK_STATUS,
-  })
-    .default('pending')
-    .notNull(),
+  accountId: integer('account_id').references(() => gameAccounts.id, { onDelete: 'cascade' }),
+  payload: text('payload', { mode: 'json' }).notNull(),
+  status: text('status').default('pending').notNull(),
   retryCount: integer('retry_count').default(0).notNull(),
   maxRetries: integer('max_retries').default(3).notNull(),
-  nextRetryAt: integer('next_retry_at'), // 存储毫秒级 Unix 时间戳
+  errorMessage: text('error_message'),
+  startedAt: text('started_at'),
+  completedAt: text('completed_at'),
+  priority: integer('priority').default(0),
+  nextRetryAt: text('next_retry_at'),
   executionHistory: text('execution_history', { mode: 'json' }).default('[]'),
-  createdAt: integer('created_at')
-    .notNull()
-    .default(sql`(strftime('%s', 'now') * 1000)`),
-  updatedAt: integer('updated_at')
-    .notNull()
-    .default(sql`(strftime('%s', 'now') * 1000)`),
+  createdBy: integer('created_by').default(0),
+  updatedBy: integer('updated_by').default(0),
+  createdAt: text('created_at').notNull().default(sql`(CURRENT_TIMESTAMP)`),
+  updatedAt: text('updated_at').notNull().default(sql`(CURRENT_TIMESTAMP)`),
+  version: integer('version').default(0),
+  isDeleted: integer('is_deleted', { mode: 'boolean' }).notNull().default(false),
 });

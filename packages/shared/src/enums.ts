@@ -3,7 +3,7 @@
 // ============================================================
 
 // 任务状态
-export const TASK_STATUS = ['pending', 'in_progress', 'completed', 'failed', 'skipped'] as const;
+export const TASK_STATUS = ['pending', 'processing', 'completed', 'failed'] as const;
 export type TaskStatus = typeof TASK_STATUS[number];
 
 // 邮件队列状态
@@ -44,10 +44,9 @@ export type EventParticipationStatus = typeof EVENT_PARTICIPATION_STATUS[number]
 
 export const TASK_STATUS_LABEL: Record<TaskStatus, string> = {
   pending: '待处理',
-  in_progress: '进行中',
+  processing: '处理中',
   completed: '已完成',
   failed: '失败',
-  skipped: '已跳过',
 };
 
 export const EMAIL_QUEUE_STATUS_LABEL: Record<EmailQueueStatus, string> = {

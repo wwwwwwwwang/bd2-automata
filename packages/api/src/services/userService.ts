@@ -2,7 +2,6 @@ import { getDb } from '../db/drizzle';
 import { users, usersToRoles, createUserSchema, updateUserSchema, z, Argon2id } from '@bd2-automata/shared';
 import { eq, and, sql } from 'drizzle-orm';
 import { HTTPException } from 'hono/http-exception';
-import { parseId } from '../utils/id';
 import type { PaginationQuery } from '@bd2-automata/shared';
 import { paginate } from '../utils/pagination';
 
@@ -15,8 +14,11 @@ const safeUserColumns = {
   email: users.email,
   emailVerified: users.emailVerified,
   lastLoginAt: users.lastLoginAt,
+  createdBy: users.createdBy,
+  updatedBy: users.updatedBy,
   createdAt: users.createdAt,
   updatedAt: users.updatedAt,
+  version: users.version,
   isDeleted: users.isDeleted,
   deletedAt: users.deletedAt,
 } as const;
@@ -35,10 +37,10 @@ export const findUsers = async (d1: D1Database, pagination: PaginationQuery) => 
 /**
  * 根据 ID 查找单个用户
  */
-export const findUserById = async (d1: D1Database, id: string) => {
+export const findUserById = async (d1: D1Database, id: number) => {
   const db = getDb(d1);
   const [user] = await db.select(safeUserColumns).from(users)
-    .where(and(eq(users.id, parseId(id)), eq(users.isDeleted, false)));
+    .where(and(eq(users.id, id), eq(users.isDeleted, false)));
   if (!user) {
     throw new HTTPException(404, { message: '用户未找到' });
   }
@@ -53,7 +55,7 @@ export const createUser = async (d1: D1Database, userData: z.infer<typeof create
   const hashedPassword = await new Argon2id().hash(userData.password);
 
   try {
-    const { password: _, ...rest } = userData;
+    const { password: _password, ...rest } = userData;
     const newUser = {
       ...rest,
       passwordHash: hashedPassword,
@@ -75,7 +77,7 @@ export const createUser = async (d1: D1Database, userData: z.infer<typeof create
 /**
  * 根据 ID 更新用户信息
  */
-export const updateUser = async (d1: D1Database, id: string, userData: z.infer<typeof updateUserSchema>) => {
+export const updateUser = async (d1: D1Database, id: number, userData: z.infer<typeof updateUserSchema>) => {
   const db = getDb(d1);
   const { password, ...rest } = userData;
 
@@ -86,7 +88,7 @@ export const updateUser = async (d1: D1Database, id: string, userData: z.infer<t
   };
 
   const [updated] = await db.update(users).set(dataToUpdate)
-    .where(and(eq(users.id, parseId(id)), eq(users.isDeleted, false)))
+    .where(and(eq(users.id, id), eq(users.isDeleted, false)))
     .returning();
 
   if (!updated) {
@@ -99,11 +101,11 @@ export const updateUser = async (d1: D1Database, id: string, userData: z.infer<t
 /**
  * 根据 ID 软删除用户
  */
-export const deleteUser = async (d1: D1Database, id: string) => {
+export const deleteUser = async (d1: D1Database, id: number) => {
   const db = getDb(d1);
   const result = await db.update(users)
     .set({ isDeleted: true, deletedAt: new Date().toISOString(), updatedAt: new Date().toISOString() })
-    .where(and(eq(users.id, parseId(id)), eq(users.isDeleted, false)))
+    .where(and(eq(users.id, id), eq(users.isDeleted, false)))
     .returning({ id: users.id });
 
   if (result.length === 0) {
@@ -115,15 +117,13 @@ export const deleteUser = async (d1: D1Database, id: string) => {
 /**
  * 为用户分配角色（先删后增）
  */
-export const assignRolesToUser = async (d1: D1Database, userId: string, roleIds: string[]) => {
+export const assignRolesToUser = async (d1: D1Database, userId: number, roleIds: number[]) => {
   const db = getDb(d1);
-  const parsedUserId = parseId(userId, 'userId');
-  const parsedRoleIds = roleIds.map((rid) => parseId(rid, 'roleId'));
 
   await db.transaction(async (tx) => {
-    await tx.delete(usersToRoles).where(eq(usersToRoles.userId, parsedUserId));
-    if (parsedRoleIds.length > 0) {
-      const newAssignments = parsedRoleIds.map(roleId => ({ userId: parsedUserId, roleId }));
+    await tx.delete(usersToRoles).where(eq(usersToRoles.userId, userId));
+    if (roleIds.length > 0) {
+      const newAssignments = roleIds.map((roleId) => ({ userId, roleId }));
       await tx.insert(usersToRoles).values(newAssignments);
     }
   });
@@ -134,14 +134,13 @@ export const assignRolesToUser = async (d1: D1Database, userId: string, roleIds:
 /**
  * 查询用户的角色列表
  */
-export const getUserRoles = async (d1: D1Database, userId: string) => {
+export const getUserRoles = async (d1: D1Database, userId: number) => {
   const db = getDb(d1);
-  const parsedUserId = parseId(userId, 'userId');
 
   const result = await db.query.usersToRoles.findMany({
-    where: eq(usersToRoles.userId, parsedUserId),
+    where: eq(usersToRoles.userId, userId),
     with: { role: true },
   });
 
-  return result.map(r => r.role);
+  return result.map((r: any) => r.role);
 };

@@ -5,7 +5,9 @@
   "main": "src/index.ts",
   "scripts": {
     "deploy": "wrangler deploy",
-    "dev": "wrangler dev"
+    "dev": "wrangler dev",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@bd2-automata/shared": "workspace:*",
@@ -19,6 +21,7 @@
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240512.0",
     "@types/bcryptjs": "^2.4.6",
+    "vitest": "^3.2.4",
     "wrangler": "^3.57.0"
   }
 }

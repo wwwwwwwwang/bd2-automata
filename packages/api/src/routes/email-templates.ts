@@ -1,12 +1,12 @@
 import { Hono } from 'hono';
 import { validate } from '../utils/validation';
 import { createEmailTemplateSchema, updateEmailTemplateSchema, paginationQuerySchema } from '@bd2-automata/shared';
-import type { Env } from '../index';
+import type { Env } from '../env';
 import { findEmailTemplates, findEmailTemplateById, createEmailTemplate, updateEmailTemplate, deleteEmailTemplate } from '../services/emailTemplateService';
 import { success } from '../utils/response';
 
 const emailTemplates = new Hono<{ Bindings: Env }>()
-  .get('/', validate('query', paginationQuerySchema), async (c) => {
+  .get('/page', validate('query', paginationQuerySchema), async (c) => {
     const pagination = c.req.valid('query');
     return c.json(success(await findEmailTemplates(c.env.DB, pagination)));
   })

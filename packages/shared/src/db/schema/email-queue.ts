@@ -1,5 +1,5 @@
 import { sql } from 'drizzle-orm';
-import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
+import { sqliteTable, text, integer, index } from 'drizzle-orm/sqlite-core';
 import { users } from './users';
 import { emailTemplates } from './email-templates';
 import { EMAIL_TYPE, EMAIL_QUEUE_STATUS } from '../../enums';
@@ -20,6 +20,12 @@ export const emailQueue = sqliteTable('automata_email_queue', {
   errorMsg: text('error_msg'),
   executionHistory: text('execution_history', { mode: 'json' }).default('[]'),
   sentAt: text('sent_at'),
+  createdBy: integer('created_by').default(0),
+  updatedBy: integer('updated_by').default(0),
   createdAt: text('created_at').notNull().default(sql`(CURRENT_TIMESTAMP)`),
   updatedAt: text('updated_at').notNull().default(sql`(CURRENT_TIMESTAMP)`),
-});
+  version: integer('version').default(0),
+  isDeleted: integer('is_deleted', { mode: 'boolean' }).notNull().default(false),
+}, (table) => ({
+  resendEmailIdIdx: index('idx_email_queue_resend_email_id').on(table.resendEmailId),
+}));

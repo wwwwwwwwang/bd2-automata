@@ -1,6 +1,6 @@
 import { getDb } from '../db/drizzle';
 import { eq, sql } from 'drizzle-orm';
-import { tasks, schema, createTaskSchema, updateTaskSchema, z } from '@bd2-automata/shared';
+import { tasks, createTaskSchema, updateTaskSchema, z } from '@bd2-automata/shared';
 import type { PaginationQuery } from '@bd2-automata/shared';
 import { paginate } from '../utils/pagination';
 import { HTTPException } from 'hono/http-exception';
@@ -12,7 +12,7 @@ export const findTasks = async (d1: D1Database, pagination: PaginationQuery) => 
   return paginate(db, query, countSql, pagination);
 };
 
-export const findTaskById = async (d1: D1Database, id: string) => {
+export const findTaskById = async (d1: D1Database, id: number) => {
   const db = getDb(d1);
   const task = await db.query.tasks.findFirst({
     where: eq(tasks.id, id),
@@ -29,7 +29,7 @@ export const createTask = async (d1: D1Database, data: z.infer<typeof createTask
   return newTask;
 };
 
-export const updateTask = async (d1: D1Database, id: string, data: z.infer<typeof updateTaskSchema>) => {
+export const updateTask = async (d1: D1Database, id: number, data: z.infer<typeof updateTaskSchema>) => {
   const db = getDb(d1);
   const [updatedTask] = await db.update(tasks).set(data).where(eq(tasks.id, id)).returning();
   if (!updatedTask) {
@@ -38,7 +38,7 @@ export const updateTask = async (d1: D1Database, id: string, data: z.infer<typeo
   return updatedTask;
 };
 
-export const deleteTask = async (d1: D1Database, id: string) => {
+export const deleteTask = async (d1: D1Database, id: number) => {
   const db = getDb(d1);
   await db.delete(tasks).where(eq(tasks.id, id));
   return { message: '任务已成功删除。' };

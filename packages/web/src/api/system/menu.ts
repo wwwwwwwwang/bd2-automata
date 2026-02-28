@@ -22,7 +22,7 @@ export function adminMenus() {
  * @param params
  */
 export function getMenuList(params?) {
-  return Alova.Get<{ list: ListDate[] }>('/menu/list', {
+  return Alova.Get<{ list: ListDate[] }>('/menu/page', {
     params,
   });
 }

@@ -1,6 +1,6 @@
 import { Hono } from 'hono';
 import { tasks, z } from '@bd2-automata/shared';
-import { Env } from '../index';
+import type { Env } from '../env';
 import { success } from '../utils/response';
 import { getDb } from '../db/drizzle';
 import { validate } from '../utils/validation';

@@ -77,7 +77,7 @@ const menuList = () => {
 };
 
 export default defineMock({
-  '/api/menu/list': () => {
+  '/api/menu/page': () => {
     const list = menuList();
     return resultSuccess({
       list,

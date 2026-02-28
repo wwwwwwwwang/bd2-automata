@@ -1,5 +1,5 @@
 import { sql } from 'drizzle-orm';
-import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
+import { sqliteTable, text, integer, uniqueIndex } from 'drizzle-orm/sqlite-core';
 import { dictionaries } from './dictionary-types';
 
 // 字典数据项表
@@ -16,4 +16,6 @@ export const dictionaryItems = sqliteTable('automata_dictionary_items', {
   updatedAt: text('updated_at').notNull().default(sql`(CURRENT_TIMESTAMP)`),
   isDeleted: integer('is_deleted', { mode: 'boolean' }).notNull().default(false),
   deletedAt: text('deleted_at'),
-});
+}, (table) => ({
+  dictionaryKeyUnique: uniqueIndex('automata_dictionary_items_dictionary_id_key_unique').on(table.dictionaryId, table.key),
+}));

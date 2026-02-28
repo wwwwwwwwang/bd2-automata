@@ -31,13 +31,13 @@ export function isCronMatchNow(cronExpression: string): boolean {
 }
 
 /**
- * 计算下一次重试的时间戳（毫秒）。
+ * 计算下一次重试时间（ISO 字符串）。
  * 使用带有最大延迟上限和正负随机抖动的指数退避策略，以实现更平滑、更健壮的重试行为。
  *
  * @param retryCount 当前的重试次数
- * @returns {number} 下一次重试的毫秒级 Unix 时间戳
+ * @returns {string} 下一次重试的 ISO 时间字符串
  */
-export function calculateNextRetry(retryCount: number): number {
+export function calculateNextRetry(retryCount: number): string {
   // 基础延迟，作为指数增长的起点
   const baseDelay = 60 * 1000; // 1分钟
 
@@ -53,5 +53,5 @@ export function calculateNextRetry(retryCount: number): number {
   // 增加一个正负均匀分布的随机抖动（-15秒到+15秒），以打散重试请求，避免流量高峰
   const jitter = (Math.random() - 0.5) * 30_000;
 
-  return Date.now() + capped + jitter;
+  return new Date(Date.now() + capped + jitter).toISOString();
 }

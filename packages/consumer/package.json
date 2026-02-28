@@ -5,15 +5,15 @@
   "main": "src/index.ts",
   "scripts": {
     "deploy": "wrangler deploy",
-    "dev": "wrangler dev"
+    "dev": "wrangler dev",
+    "test": "vitest run"
   },
   "dependencies": {
-    "@bd2-automata/shared": "workspace:*",
-    "hono": "^4.3.7",
-    "resend": "^6.9.2"
+    "hono": "^4.3.7"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240512.0",
+    "vitest": "^3.2.4",
     "wrangler": "^3.57.0"
   }
 }

@@ -12,7 +12,7 @@ binding = "DB" # 在代码中通过 env.DB 访问
 database_name = "bd2-automata-db"
 database_id = "<YOUR_DATABASE_ID>" # 在创建 D1 数据库后，需要在这里填入实际的 ID
 
-# 绑定 Consumer Worker，使其可以被 API Worker 唤醒
+# 绑定 Consumer Worker（EMAIL_PROCESS_MODE=consumer 时由 API 委托调用）
 [[services]]
 binding = "CONSUMER"
 service = "bd2-automata-consumer"
@@ -26,3 +26,4 @@ preview_id = "<YOUR_KV_NAMESPACE_PREVIEW_ID>" # 用于本地开发的 preview_id
 # Secrets (通过 wrangler secret put 设置，不要写在此文件中)
 # - JWT_SECRET: JWT 签名密钥
 # - RESEND_API_KEY: Resend 邮件服务 API 密钥
+# - EMAIL_PROCESS_MODE: 邮件处理模式，api(默认) / consumer
