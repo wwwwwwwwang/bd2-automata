@@ -4,7 +4,7 @@ import { z } from 'zod';
 export const createRoleSchema = z.object({
   name: z.string().min(1, '角色名称不能为空'),
   description: z.string().optional(),
-  permissionIds: z.array(z.string()).optional(),
+  isActive: z.boolean().optional(),
 });
 
 // 更新角色的校验 Schema
