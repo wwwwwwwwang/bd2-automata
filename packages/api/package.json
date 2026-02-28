@@ -7,7 +7,8 @@
     "deploy": "wrangler deploy",
     "dev": "wrangler dev",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "validate:automata-prefix": "node ./scripts/validate-automata-prefix.mjs"
   },
   "dependencies": {
     "@bd2-automata/shared": "workspace:*",

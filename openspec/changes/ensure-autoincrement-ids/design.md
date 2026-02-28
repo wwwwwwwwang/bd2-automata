@@ -33,7 +33,7 @@
 - automata_gift_codes
 - automata_dictionaries
 - automata_dictionary_items
-- automata_logs
+- automata_task_logs
 - automata_refresh_tokens
 - automata_password_reset_tokens
 - automata_email_change_tokens

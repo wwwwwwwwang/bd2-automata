@@ -3,7 +3,7 @@ import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
 import { gameAccounts } from './game-accounts';
 
 // 异步任务队列 - 与 backup_schema_only.sql 对齐
-export const tasks = sqliteTable('task_queue', {
+export const tasks = sqliteTable('automata_task_queue', {
   id: integer('id').primaryKey({ autoIncrement: true }),
   taskType: text('task_type').notNull(),
   accountId: integer('account_id').references(() => gameAccounts.id, { onDelete: 'cascade' }),

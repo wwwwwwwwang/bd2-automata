@@ -7,7 +7,7 @@ import { usersToRoles } from './users-to-roles';
 import { rolesToPermissions } from './roles-to-permissions';
 import { dictionaryItems } from './dictionary-items';
 import { dictionaries } from './dictionary-types';
-import { logs } from './logs';
+import { taskLogs } from './logs';
 import { tasks } from './tasks';
 import { refreshTokens } from './refresh-tokens';
 import { passwordResetTokens } from './password-reset-tokens';
@@ -27,7 +27,7 @@ import { eventSchedules } from './events';
 export const usersRelations = relations(users, ({ many }) => ({
   usersToRoles: many(usersToRoles),
   gameAccounts: many(gameAccounts),
-  logs: many(logs),
+  taskLogs: many(taskLogs),
   refreshTokens: many(refreshTokens),
   passwordResetTokens: many(passwordResetTokens),
   emailChangeTokens: many(emailChangeTokens),
@@ -92,16 +92,16 @@ export const gameAccountsRelations = relations(gameAccounts, ({ one, many }) => 
 // Tasks & Logs
 // ===================================================================
 export const tasksRelations = relations(tasks, ({ many }) => ({
-  logs: many(logs),
+  taskLogs: many(taskLogs),
 }));
 
-export const logsRelations = relations(logs, ({ one }) => ({
+export const taskLogsRelations = relations(taskLogs, ({ one }) => ({
   task: one(tasks, {
-    fields: [logs.taskId],
+    fields: [taskLogs.taskId],
     references: [tasks.id],
   }),
   gameAccount: one(gameAccounts, {
-    fields: [logs.gameAccountId],
+    fields: [taskLogs.gameAccountId],
     references: [gameAccounts.id],
   }),
 }));

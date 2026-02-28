@@ -46,7 +46,7 @@ import * as cronConfigs from './cron-configs';
 import * as dictionaryTypes from './dictionary-types';
 import * as dictionaryItems from './dictionary-items';
 import * as tasks from './tasks';
-import * as logs from './logs';
+import * as taskLogs from './logs';
 import * as giftCodes from './gift-codes';
 import * as events from './events';
 import * as gameAccounts from './game-accounts';
@@ -73,7 +73,7 @@ export const schema = Object.freeze({
   ...dictionaryTypes,
   ...dictionaryItems,
   ...tasks,
-  ...logs,
+  ...taskLogs,
   ...giftCodes,
   ...events,
   ...gameAccounts,

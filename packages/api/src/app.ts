@@ -8,7 +8,7 @@ import type { Env } from './env';
 
 import users from './routes/users';
 import roles from './routes/roles';
-import tasksRoute from './routes/tasks';
+import tasks from './routes/tasks';
 import emailTemplates from './routes/email-templates';
 import { publicAuthRoutes, protectedAuthRoutes } from './routes/auth';
 import emailQueue from './routes/email-queue';
@@ -22,7 +22,7 @@ import dictionaryItems from './routes/dictionary-items';
 import giftCodes from './routes/gift-codes';
 import events from './routes/events';
 import gameAccounts from './routes/game-accounts';
-import logs from './routes/logs';
+import taskLogs from './routes/task-logs';
 import permissions from './routes/permissions';
 import admin from './routes/admin';
 import webhooks from './routes/webhooks';
@@ -71,8 +71,8 @@ const protectedRoutes = new Hono<{ Bindings: Env }>()
   .route('/gift-codes', giftCodes)
   .route('/events', events)
   .route('/game-accounts', gameAccounts)
-  .route('/logs', logs)
-  .route('/tasks', tasksRoute)
+  .route('/task-logs', taskLogs)
+  .route('/tasks', tasks)
   .route('/email-templates', emailTemplates)
   .route('/email-queue', emailQueue)
   .route('/email-stats', emailStats)

@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import logs from '../logs';
+import taskLogsRoute from '../task-logs';
 
 vi.mock('../../middlewares/auth', () => ({
   authMiddleware: async (_c: any, next: any) => next(),
@@ -13,7 +13,7 @@ const serviceMocks = vi.hoisted(() => ({
 
 vi.mock('../../services/logService', () => serviceMocks);
 
-describe('logs route contracts', () => {
+describe('task-logs route contracts', () => {
   const env = {
     DB: {} as D1Database,
   } as any;
@@ -22,7 +22,7 @@ describe('logs route contracts', () => {
     vi.clearAllMocks();
   });
 
-  it('GET /page returns paginated logs payload', async () => {
+  it('GET /page returns paginated task logs payload', async () => {
     const pagePayload = {
       items: [{ id: 1, message: 'ok' }],
       meta: { total: 1, page: 1, limit: 10, totalPages: 1 },
@@ -30,7 +30,7 @@ describe('logs route contracts', () => {
     serviceMocks.findLogs.mockResolvedValue(pagePayload);
 
     const req = new Request('http://api/page?page=1&limit=10');
-    const res = await logs.fetch(req, env, {} as ExecutionContext);
+    const res = await taskLogsRoute.fetch(req, env, {} as ExecutionContext);
 
     expect(res.status).toBe(200);
     await expect(res.json()).resolves.toEqual({ success: true, data: pagePayload });
@@ -42,7 +42,7 @@ describe('logs route contracts', () => {
     serviceMocks.deleteLog.mockResolvedValue(deleted);
 
     const req = new Request('http://api/9', { method: 'DELETE' });
-    const res = await logs.fetch(req, env, {} as ExecutionContext);
+    const res = await taskLogsRoute.fetch(req, env, {} as ExecutionContext);
 
     expect(res.status).toBe(200);
     await expect(res.json()).resolves.toEqual({ success: true, data: deleted });
@@ -51,7 +51,7 @@ describe('logs route contracts', () => {
 
   it('DELETE /:id rejects invalid id with 400', async () => {
     const req = new Request('http://api/not-a-number', { method: 'DELETE' });
-    const res = await logs.fetch(req, env, {} as ExecutionContext);
+    const res = await taskLogsRoute.fetch(req, env, {} as ExecutionContext);
 
     expect(res.status).toBe(400);
     await expect(res.text()).resolves.toBe('id 必须为数字字符串');
@@ -60,7 +60,7 @@ describe('logs route contracts', () => {
 
   it('POST / is rejected with identifiable error', async () => {
     const req = new Request('http://api', { method: 'POST' });
-    const res = await logs.fetch(req, env, {} as ExecutionContext);
+    const res = await taskLogsRoute.fetch(req, env, {} as ExecutionContext);
 
     expect(res.status).toBe(405);
     await expect(res.text()).resolves.toBe('日志资源仅支持查询与删除，不支持新增');
@@ -68,7 +68,7 @@ describe('logs route contracts', () => {
 
   it('PUT /:id is rejected with identifiable error', async () => {
     const req = new Request('http://api/1', { method: 'PUT' });
-    const res = await logs.fetch(req, env, {} as ExecutionContext);
+    const res = await taskLogsRoute.fetch(req, env, {} as ExecutionContext);
 
     expect(res.status).toBe(405);
     await expect(res.text()).resolves.toBe('日志资源仅支持查询与删除，不支持修改');
@@ -76,7 +76,7 @@ describe('logs route contracts', () => {
 
   it('PATCH /:id is rejected with identifiable error', async () => {
     const req = new Request('http://api/1', { method: 'PATCH' });
-    const res = await logs.fetch(req, env, {} as ExecutionContext);
+    const res = await taskLogsRoute.fetch(req, env, {} as ExecutionContext);
 
     expect(res.status).toBe(405);
     await expect(res.text()).resolves.toBe('日志资源仅支持查询与删除，不支持修改');

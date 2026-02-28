@@ -9,8 +9,11 @@ CREATE TABLE `automata_users` (
 	`email_verify_token` text,
 	`email_verify_token_expires` integer,
 	`last_login_at` text,
+	`created_by` integer DEFAULT 0,
+	`updated_by` integer DEFAULT 0,
 	`created_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
 	`updated_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
+	`version` integer DEFAULT 0,
 	`is_deleted` integer DEFAULT false NOT NULL,
 	`deleted_at` text
 );
@@ -41,10 +44,11 @@ CREATE TABLE `automata_permissions` (
 	`created_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
 	`updated_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
 	`is_deleted` integer DEFAULT false NOT NULL,
-	`deleted_at` text
+	`deleted_at` text,
+	FOREIGN KEY (`parent_id`) REFERENCES `automata_permissions`(`id`) ON UPDATE no action ON DELETE cascade
 );
 --> statement-breakpoint
-CREATE TABLE `cron_configs` (
+CREATE TABLE `automata_cron_configs` (
 	`task_type` text PRIMARY KEY NOT NULL,
 	`cron_expression` text NOT NULL,
 	`is_active` integer DEFAULT true NOT NULL
@@ -79,20 +83,30 @@ CREATE TABLE `automata_dictionary_items` (
 	FOREIGN KEY (`dictionary_id`) REFERENCES `automata_dictionaries`(`id`) ON UPDATE no action ON DELETE cascade
 );
 --> statement-breakpoint
-CREATE TABLE `task_queue` (
-	`id` text PRIMARY KEY NOT NULL,
+CREATE TABLE `automata_task_queue` (
+	`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL,
 	`task_type` text NOT NULL,
-	`payload` text,
+	`account_id` integer,
+	`payload` text NOT NULL,
 	`status` text DEFAULT 'pending' NOT NULL,
 	`retry_count` integer DEFAULT 0 NOT NULL,
 	`max_retries` integer DEFAULT 3 NOT NULL,
-	`next_retry_at` integer,
+	`error_message` text,
+	`started_at` text,
+	`completed_at` text,
+	`priority` integer DEFAULT 0,
+	`next_retry_at` text,
 	`execution_history` text DEFAULT '[]',
-	`created_at` integer DEFAULT (strftime('%s', 'now') * 1000) NOT NULL,
-	`updated_at` integer DEFAULT (strftime('%s', 'now') * 1000) NOT NULL
+	`created_by` integer DEFAULT 0,
+	`updated_by` integer DEFAULT 0,
+	`created_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
+	`updated_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
+	`version` integer DEFAULT 0,
+	`is_deleted` integer DEFAULT false NOT NULL,
+	FOREIGN KEY (`account_id`) REFERENCES `automata_game_accounts`(`id`) ON UPDATE no action ON DELETE cascade
 );
 --> statement-breakpoint
-CREATE TABLE `automata_logs` (
+CREATE TABLE `automata_task_logs` (
 	`id` integer PRIMARY KEY NOT NULL,
 	`task_id` integer,
 	`game_account_id` integer,
@@ -100,7 +114,7 @@ CREATE TABLE `automata_logs` (
 	`message` text,
 	`details` text,
 	`executed_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
-	FOREIGN KEY (`task_id`) REFERENCES `task_queue`(`id`) ON UPDATE no action ON DELETE set null,
+	FOREIGN KEY (`task_id`) REFERENCES `automata_task_queue`(`id`) ON UPDATE no action ON DELETE set null,
 	FOREIGN KEY (`game_account_id`) REFERENCES `automata_game_accounts`(`id`) ON UPDATE no action ON DELETE cascade
 );
 --> statement-breakpoint
@@ -153,32 +167,46 @@ CREATE TABLE `automata_game_accounts` (
 CREATE TABLE `automata_user_roles` (
 	`user_id` integer NOT NULL,
 	`role_id` integer NOT NULL,
-	PRIMARY KEY(`role_id`, `user_id`)
+	PRIMARY KEY(`role_id`, `user_id`),
+	FOREIGN KEY (`user_id`) REFERENCES `automata_users`(`id`) ON UPDATE no action ON DELETE cascade,
+	FOREIGN KEY (`role_id`) REFERENCES `automata_roles`(`id`) ON UPDATE no action ON DELETE cascade
 );
 --> statement-breakpoint
 CREATE TABLE `automata_role_permissions` (
 	`role_id` integer NOT NULL,
 	`permission_id` integer NOT NULL,
-	PRIMARY KEY(`permission_id`, `role_id`)
+	PRIMARY KEY(`permission_id`, `role_id`),
+	FOREIGN KEY (`role_id`) REFERENCES `automata_roles`(`id`) ON UPDATE no action ON DELETE cascade,
+	FOREIGN KEY (`permission_id`) REFERENCES `automata_permissions`(`id`) ON UPDATE no action ON DELETE cascade
 );
 --> statement-breakpoint
 CREATE TABLE `automata_daily_attendance_logs` (
 	`id` integer PRIMARY KEY NOT NULL,
 	`game_account_id` integer NOT NULL,
-	`status` text NOT NULL,
-	`message` text,
 	`attendance_date` text NOT NULL,
+	`status` integer DEFAULT 1,
+	`response_msg` text,
+	`created_by` integer DEFAULT 0,
+	`updated_by` integer DEFAULT 0,
 	`created_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
+	`updated_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
+	`version` integer DEFAULT 0,
+	`is_deleted` integer DEFAULT false NOT NULL,
 	FOREIGN KEY (`game_account_id`) REFERENCES `automata_game_accounts`(`id`) ON UPDATE no action ON DELETE cascade
 );
 --> statement-breakpoint
 CREATE TABLE `automata_weekly_attendance_logs` (
 	`id` integer PRIMARY KEY NOT NULL,
 	`game_account_id` integer NOT NULL,
-	`status` text NOT NULL,
-	`message` text,
 	`week_identifier` text NOT NULL,
+	`status` integer DEFAULT 1,
+	`response_msg` text,
+	`created_by` integer DEFAULT 0,
+	`updated_by` integer DEFAULT 0,
 	`created_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
+	`updated_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
+	`version` integer DEFAULT 0,
+	`is_deleted` integer DEFAULT false NOT NULL,
 	FOREIGN KEY (`game_account_id`) REFERENCES `automata_game_accounts`(`id`) ON UPDATE no action ON DELETE cascade
 );
 --> statement-breakpoint
@@ -187,25 +215,36 @@ CREATE TABLE `automata_redemption_logs` (
 	`game_account_id` integer NOT NULL,
 	`gift_code_id` integer,
 	`code_used` text NOT NULL,
-	`status` text NOT NULL,
-	`message` text,
+	`redeem_result` integer DEFAULT 1,
+	`response_msg` text,
+	`task_id` integer,
+	`created_by` integer DEFAULT 0,
+	`updated_by` integer DEFAULT 0,
 	`created_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
+	`updated_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
+	`version` integer DEFAULT 0,
+	`is_deleted` integer DEFAULT false NOT NULL,
 	FOREIGN KEY (`game_account_id`) REFERENCES `automata_game_accounts`(`id`) ON UPDATE no action ON DELETE cascade,
-	FOREIGN KEY (`gift_code_id`) REFERENCES `automata_gift_codes`(`id`) ON UPDATE no action ON DELETE set null
+	FOREIGN KEY (`gift_code_id`) REFERENCES `automata_gift_codes`(`id`) ON UPDATE no action ON DELETE cascade
 );
 --> statement-breakpoint
 CREATE TABLE `automata_event_participation_logs` (
 	`id` integer PRIMARY KEY NOT NULL,
 	`game_account_id` integer NOT NULL,
 	`event_schedule_id` integer,
-	`status` text NOT NULL,
-	`message` text,
+	`participation_result` integer DEFAULT 1,
+	`response_msg` text,
+	`task_id` integer,
+	`created_by` integer DEFAULT 0,
+	`updated_by` integer DEFAULT 0,
 	`created_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
+	`updated_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
+	`version` integer DEFAULT 0,
+	`is_deleted` integer DEFAULT false NOT NULL,
 	FOREIGN KEY (`game_account_id`) REFERENCES `automata_game_accounts`(`id`) ON UPDATE no action ON DELETE cascade,
-	FOREIGN KEY (`event_schedule_id`) REFERENCES `automata_event_schedules`(`id`) ON UPDATE no action ON DELETE set null
+	FOREIGN KEY (`event_schedule_id`) REFERENCES `automata_event_schedules`(`event_schedule_id`) ON UPDATE no action ON DELETE set null
 );
 --> statement-breakpoint
--- 说明：user_keys 和 user_sessions 表已从当前 schema 移除，因此初始迁移中不再创建这两张表
 CREATE TABLE `automata_distributed_locks` (
 	`lock_key` text PRIMARY KEY NOT NULL,
 	`locked_by` text NOT NULL,
@@ -278,8 +317,12 @@ CREATE TABLE `automata_email_queue` (
 	`error_msg` text,
 	`execution_history` text DEFAULT '[]',
 	`sent_at` text,
+	`created_by` integer DEFAULT 0,
+	`updated_by` integer DEFAULT 0,
 	`created_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
 	`updated_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
+	`version` integer DEFAULT 0,
+	`is_deleted` integer DEFAULT false NOT NULL,
 	FOREIGN KEY (`user_id`) REFERENCES `automata_users`(`id`) ON UPDATE no action ON DELETE cascade,
 	FOREIGN KEY (`template_id`) REFERENCES `automata_email_templates`(`id`) ON UPDATE no action ON DELETE set null
 );
@@ -296,14 +339,20 @@ CREATE TABLE `automata_email_stats` (
 	`password_reset_count` integer DEFAULT 0,
 	`token_expired_count` integer DEFAULT 0,
 	`system_notify_count` integer DEFAULT 0,
+	`created_by` integer DEFAULT 0,
+	`updated_by` integer DEFAULT 0,
 	`created_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
-	`updated_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL
+	`updated_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
+	`version` integer DEFAULT 0,
+	`is_deleted` integer DEFAULT false NOT NULL
 );
 --> statement-breakpoint
 CREATE UNIQUE INDEX `automata_users_username_unique` ON `automata_users` (`username`);--> statement-breakpoint
+CREATE UNIQUE INDEX `automata_users_email_unique` ON `automata_users` (`email`);--> statement-breakpoint
 CREATE UNIQUE INDEX `automata_roles_name_unique` ON `automata_roles` (`name`);--> statement-breakpoint
 CREATE UNIQUE INDEX `automata_permissions_code_unique` ON `automata_permissions` (`code`);--> statement-breakpoint
 CREATE UNIQUE INDEX `automata_dictionaries_code_unique` ON `automata_dictionaries` (`code`);--> statement-breakpoint
+CREATE UNIQUE INDEX `automata_dictionary_items_dictionary_id_key_unique` ON `automata_dictionary_items` (`dictionary_id`,`key`);--> statement-breakpoint
 CREATE UNIQUE INDEX `automata_gift_codes_code_unique` ON `automata_gift_codes` (`code`);--> statement-breakpoint
 CREATE UNIQUE INDEX `automata_event_schedules_event_schedule_id_unique` ON `automata_event_schedules` (`event_schedule_id`);--> statement-breakpoint
 CREATE UNIQUE INDEX `automata_game_accounts_game_nickname_unique` ON `automata_game_accounts` (`game_nickname`);--> statement-breakpoint
