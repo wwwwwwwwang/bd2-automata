@@ -105,6 +105,47 @@ describe('roles route contracts', () => {
     });
   });
 
+  it('GET /:id/permissions returns role permissions list', async () => {
+    const permissions = [{ id: 1, code: 'user:read' }];
+    serviceMocks.getRolePermissions.mockResolvedValue(permissions);
+
+    const req = new Request('http://api/5/permissions');
+    const res = await roles.fetch(req, env, {} as ExecutionContext);
+
+    expect(res.status).toBe(200);
+    await expect(res.json()).resolves.toEqual({ success: true, data: permissions });
+    expect(serviceMocks.getRolePermissions).toHaveBeenCalledWith(env.DB, 5);
+  });
+
+  it('POST /:id/permissions assigns permissions with parsed permissionIds', async () => {
+    const assigned = { message: '权限已成功分配。' };
+    serviceMocks.assignPermissionsToRole.mockResolvedValue(assigned);
+
+    const req = new Request('http://api/5/permissions', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ permissionIds: ['9', '11'] }),
+    });
+    const res = await roles.fetch(req, env, {} as ExecutionContext);
+
+    expect(res.status).toBe(200);
+    await expect(res.json()).resolves.toEqual({ success: true, data: assigned });
+    expect(serviceMocks.assignPermissionsToRole).toHaveBeenCalledWith(env.DB, 5, [9, 11]);
+  });
+
+  it('POST /:id/permissions rejects invalid permissionId with 400', async () => {
+    const req = new Request('http://api/5/permissions', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ permissionIds: ['oops'] }),
+    });
+    const res = await roles.fetch(req, env, {} as ExecutionContext);
+
+    expect(res.status).toBe(400);
+    await expect(res.text()).resolves.toBe('permissionId 必须为数字字符串');
+    expect(serviceMocks.assignPermissionsToRole).not.toHaveBeenCalled();
+  });
+
   it('DELETE /:id returns success message', async () => {
     const deleted = { message: '角色已成功删除。' };
     serviceMocks.deleteRole.mockResolvedValue(deleted);
