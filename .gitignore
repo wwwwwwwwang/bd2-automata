@@ -37,6 +37,7 @@ Desktop.ini
 # Local tooling artifacts
 .trae/
 .claude/
+.tmp/
 
 # Historical reports and temporary assets
 *_Report.md
