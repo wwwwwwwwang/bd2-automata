@@ -1,0 +1,508 @@
+接口1：
+请求：fetch("https://api.thebd2pulse.com/redeem", {
+  "headers": {
+    "accept": "*/*",
+    "accept-language": "zh-CN,zh;q=0.9",
+    "content-type": "application/json",
+    "priority": "u=1, i",
+    "sec-ch-ua": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "same-site",
+    "x-api-key": "pulse-key-abc123-xyz789-very-secret"
+  },
+  "referrer": "https://thebd2pulse.com/",
+  "body": null,
+  "method": "GET",
+  "mode": "cors",
+  "credentials": "omit"
+});
+响应：[
+  {
+    "code": "2025CHRISTMASSANTA",
+    "reward": {
+      "zh-Hant-TW": "10抽",
+      "zh-Hans-CN": "10抽",
+      "en": "10 Draw",
+      "ja-JP": "ガチャ券×10",
+      "ko-KR": "10뽑"
+    },
+    "status": "limited",
+    "expiry_date": "2025/12/28",
+    "image_url": "https://pbs.twimg.com/media/G86hqJcaAAAcRKt?format=jpg"
+  },
+  {
+    "code": "BURAJONNMTSP",
+    "reward": {
+      "zh-Hant-TW": "3抽",
+      "zh-Hans-CN": "3抽",
+      "en": "3 Draw",
+      "ja-JP": "ガチャ券×3",
+      "ko-KR": "3뽑"
+    },
+    "status": "limited",
+    "expiry_date": "2025/12/21",
+    "image_url": null
+  },
+  {
+    "code": "BD2Anniversary25",
+    "reward": {
+      "zh-Hant-TW": "3抽",
+      "zh-Hans-CN": "3抽",
+      "en": "3 Draw",
+      "ja-JP": "ガチャ券×3",
+      "ko-KR": "3뽑"
+    },
+    "status": "limited",
+    "expiry_date": "2025/12/21",
+    "image_url": null
+  },
+  {
+    "code": "2025GLUPYTAIPEILIVE",
+    "reward": {
+      "zh-Hant-TW": "10抽",
+      "zh-Hans-CN": "10抽",
+      "en": "10 Draw",
+      "ja-JP": "ガチャ券×10",
+      "ko-KR": "10뽑"
+    },
+    "status": "limited",
+    "expiry_date": "2026/01/16",
+    "image_url": "https://truth.bahamut.com.tw/s01/202512/forum/76207/47884d8648b49e4961d79570a38b9762.JPG"
+  },
+  {
+    "code": "BD2RADIODARIAN",
+    "reward": {
+      "zh-Hant-TW": "3抽",
+      "zh-Hans-CN": "3抽",
+      "en": "3 Draw",
+      "ja-JP": "ガチャ券×3",
+      "ko-KR": "3뽑"
+    },
+    "status": "limited",
+    "expiry_date": "2026/01/31",
+    "image_url": "https://image.hibiki-radio.jp/uploads/program_banner/image1/536/8e9c80f1-2ceb-4695-9279-f70225165f51.png"
+  },
+  {
+    "code": "THANKSAGF2025NBD2",
+    "reward": {
+      "zh-Hant-TW": "1000鑽",
+      "zh-Hans-CN": "1000钻",
+      "en": "1000 Dias",
+      "ja-JP": "1000ダイヤ",
+      "ko-KR": "1000다이아"
+    },
+    "status": "limited",
+    "expiry_date": "2025/12/31",
+    "image_url": "https://pbs.twimg.com/media/G7nLwFPawAE8RKf?format=jpg"
+  },
+  {
+    "code": "2025BD2DEC",
+    "reward": {
+      "zh-Hant-TW": "2抽",
+      "zh-Hans-CN": "2抽",
+      "en": "2 Draw",
+      "ja-JP": "ガチャ券×2",
+      "ko-KR": "2뽑"
+    },
+    "status": "limited",
+    "expiry_date": "2026/01/01",
+    "image_url": null
+  },
+  {
+    "code": "BURAJO1146SH",
+    "reward": {
+      "zh-Hant-TW": "3抽",
+      "zh-Hans-CN": "3抽",
+      "en": "3 Draw",
+      "ja-JP": "ガチャ券×3",
+      "ko-KR": "3뽑"
+    },
+    "status": "limited",
+    "expiry_date": "2025/11/23",
+    "image_url": "https://pbs.twimg.com/media/G5iMVfCb0AEnan7?format=jpg&name=large"
+  },
+  {
+    "code": "2025BD2NOV",
+    "reward": {
+      "zh-Hant-TW": "2抽",
+      "zh-Hans-CN": "2抽",
+      "en": "2 Draw",
+      "ja-JP": "ガチャ券×2",
+      "ko-KR": "2뽑"
+    },
+    "status": "limited",
+    "expiry_date": "2025/12/01",
+    "image_url": null
+  },
+  {
+    "code": "BD2RADIO1101",
+    "reward": {
+      "zh-Hant-TW": "3抽",
+      "zh-Hans-CN": "3抽",
+      "en": "3 Draw",
+      "ja-JP": "ガチャ券×3",
+      "ko-KR": "3뽑"
+    },
+    "status": "limited",
+    "expiry_date": "2025/12/31",
+    "image_url": "https://image.hibiki-radio.jp/uploads/program_banner/image1/536/8e9c80f1-2ceb-4695-9279-f70225165f51.png"
+  },
+  {
+    "code": "BURAJOCODE06F",
+    "reward": {
+      "zh-Hant-TW": "3抽",
+      "zh-Hans-CN": "3抽",
+      "en": "3 Draw",
+      "ja-JP": "ガチャ券×3",
+      "ko-KR": "3뽑"
+    },
+    "status": "limited",
+    "expiry_date": "2025/10/26",
+    "image_url": "https://pbs.twimg.com/media/G38UlpgX0AA76Mi?format=jpg"
+  },
+  {
+    "code": "HALLOWEEN25",
+    "reward": {
+      "zh-Hant-TW": "10抽",
+      "zh-Hans-CN": "10抽",
+      "en": "10 Draw",
+      "ja-JP": "ガチャ券×10",
+      "ko-KR": "10뽑"
+    },
+    "status": "limited",
+    "expiry_date": "2025/11/01",
+    "image_url": "https://pbs.twimg.com/media/G37xHD3XkAA57BL?format=jpg"
+  },
+  {
+    "code": "1017BETTERBD2",
+    "reward": {
+      "zh-Hant-TW": "10抽",
+      "zh-Hans-CN": "10抽",
+      "en": "10 Draw",
+      "ja-JP": "ガチャ券×10",
+      "ko-KR": "10뽑"
+    },
+    "status": "limited",
+    "expiry_date": "2025/11/01",
+    "image_url": "https://pbs.twimg.com/media/G24dDy-aAAEqzPt?format=jpg"
+  },
+  {
+    "code": "FULLMOON25",
+    "reward": {
+      "zh-Hant-TW": "10抽",
+      "zh-Hans-CN": "10抽",
+      "en": "10 Draw",
+      "ja-JP": "ガチャ券×10",
+      "ko-KR": "10뽑"
+    },
+    "status": "limited",
+    "expiry_date": "2025/10/13",
+    "image_url": "https://pbs.twimg.com/media/G2J9pNiaIAQAhm9?format=jpg"
+  },
+  {
+    "code": "2025BD2OCT",
+    "reward": {
+      "zh-Hant-TW": "2抽",
+      "zh-Hans-CN": "2抽",
+      "en": "2 Draw",
+      "ja-JP": "ガチャ券×2",
+      "ko-KR": "2뽑"
+    },
+    "status": "limited",
+    "expiry_date": "2025/11/01",
+    "image_url": null
+  },
+  {
+    "code": "THANKS2025TGS",
+    "reward": {
+      "zh-Hant-TW": "600鑽",
+      "zh-Hans-CN": "600钻",
+      "en": "600 Dias",
+      "ja-JP": "600ダイヤ",
+      "ko-KR": "600다이아"
+    },
+    "status": "limited",
+    "expiry_date": "2025/10/05",
+    "image_url": "https://pbs.twimg.com/media/G17Gm2QbQAAto5E?format=jpg"
+  },
+  {
+    "code": "BD2RADIO1001",
+    "reward": {
+      "zh-Hant-TW": "3抽",
+      "zh-Hans-CN": "3抽",
+      "en": "3 Draw",
+      "ja-JP": "ガチャ券×3",
+      "ko-KR": "3뽑"
+    },
+    "status": "limited",
+    "expiry_date": "2025/11/30",
+    "image_url": "https://image.hibiki-radio.jp/uploads/program_banner/image1/536/8e9c80f1-2ceb-4695-9279-f70225165f51.png"
+  },
+  {
+    "code": "BURAJOCODE05E",
+    "reward": {
+      "zh-Hant-TW": "3抽",
+      "zh-Hans-CN": "3抽",
+      "en": "3 Draw",
+      "ja-JP": "ガチャ券×3",
+      "ko-KR": "3뽑"
+    },
+    "status": "limited",
+    "expiry_date": "2025/09/29",
+    "image_url": "https://pbs.twimg.com/media/G1Uy5zrbQAEPUHc?format=jpg"
+  },
+  {
+    "code": "THANKSKYOMAF2025",
+    "reward": {
+      "zh-Hant-TW": "600鑽",
+      "zh-Hans-CN": "600钻",
+      "en": "600 Dias",
+      "ja-JP": "600ダイヤ",
+      "ko-KR": "600다이아"
+    },
+    "status": "limited",
+    "expiry_date": "2025/10/05",
+    "image_url": "https://pbs.twimg.com/media/G1Whn9DbQAQIkns?format=jpg"
+  },
+  {
+    "code": "BURAJOCODEP02",
+    "reward": {
+      "zh-Hant-TW": "300鑽",
+      "zh-Hans-CN": "300钻",
+      "en": "300 Dias",
+      "ja-JP": "300ダイヤ",
+      "ko-KR": "300다이아"
+    },
+    "status": "limited",
+    "expiry_date": "2025/09/20",
+    "image_url": "https://pbs.twimg.com/media/G1C3loca0AAslkG?format=jpg"
+  },
+  {
+    "code": "BD2RADIO0901",
+    "reward": {
+      "zh-Hant-TW": "3抽",
+      "zh-Hans-CN": "3抽",
+      "en": "3 Draw",
+      "ja-JP": "ガチャ券×3",
+      "ko-KR": "3뽑"
+    },
+    "status": "limited",
+    "expiry_date": "2025/10/31",
+    "image_url": "https://pbs.twimg.com/media/Gzu0F-NbUAEGNMQ?format=jpg"
+  },
+  {
+    "code": "2025BD2SEP",
+    "reward": {
+      "zh-Hant-TW": "2抽",
+      "zh-Hans-CN": "2抽",
+      "en": "2 Draw",
+      "ja-JP": "ガチャ券×2",
+      "ko-KR": "2뽑"
+    },
+    "status": "limited",
+    "expiry_date": "2025/10/1",
+    "image_url": null
+  },
+  {
+    "code": "BD2ANIMENYC2025",
+    "reward": {
+      "zh-Hant-TW": "600鑽",
+      "zh-Hans-CN": "600钻",
+      "en": "600 Dias",
+      "ja-JP": "600ダイヤ",
+      "ko-KR": "600다이아"
+    },
+    "status": "limited",
+    "expiry_date": "2025/9/25",
+    "image_url": "https://pbs.twimg.com/media/GzLAs88aQAAvPg1?format=jpg"
+  },
+  {
+    "code": "BD2FF45",
+    "reward": {
+      "zh-Hant-TW": "600鑽",
+      "zh-Hans-CN": "600钻",
+      "en": "600 Dias",
+      "ja-JP": "600ダイヤ",
+      "ko-KR": "600다이아"
+    },
+    "status": "limited",
+    "expiry_date": null,
+    "image_url": "https://pbs.twimg.com/media/Gy7nhYjboAAe7s0?format=jpg"
+  },
+  {
+    "code": "THANKSC106",
+    "reward": {
+      "zh-Hant-TW": "600鑽",
+      "zh-Hans-CN": "600钻",
+      "en": "600 Dias",
+      "ja-JP": "600ダイヤ",
+      "ko-KR": "600다이아"
+    },
+    "status": "limited",
+    "expiry_date": "2025/8/31",
+    "image_url": null
+  },
+  {
+    "code": "BURAJOCODE04D",
+    "reward": {
+      "zh-Hant-TW": "3抽",
+      "zh-Hans-CN": "3抽",
+      "en": "3 Draw",
+      "ja-JP": "ガチャ券×3",
+      "ko-KR": "3뽑"
+    },
+    "status": "limited",
+    "expiry_date": "2025/8/17",
+    "image_url": null
+  },
+  {
+    "code": "BD2RADIO0801",
+    "reward": {
+      "zh-Hant-TW": "3抽",
+      "zh-Hans-CN": "3抽",
+      "en": "3 Draw",
+      "ja-JP": "ガチャ券×3",
+      "ko-KR": "3뽑"
+    },
+    "status": "limited",
+    "expiry_date": "2025/09/30",
+    "image_url": null
+  },
+  {
+    "code": "2025BD2AUG",
+    "reward": {
+      "zh-Hant-TW": "2抽",
+      "zh-Hans-CN": "2抽",
+      "en": "2 Draw",
+      "ja-JP": "ガチャ券×2",
+      "ko-KR": "2뽑"
+    },
+    "status": "limited",
+    "expiry_date": "2025/9/1",
+    "image_url": null
+  },
+  {
+    "code": "BD2SDCC2025",
+    "reward": {
+      "zh-Hant-TW": "600鑽",
+      "zh-Hans-CN": "600钻",
+      "en": "600 Dias",
+      "ja-JP": "600ダイヤ",
+      "ko-KR": "600다이아"
+    },
+    "status": "limited",
+    "expiry_date": "2025/8/24",
+    "image_url": "https://www.browndust2.com/uploads/SDCC_TW_265c7d2327.png"
+  },
+  {
+    "code": "BURAJOCODE03C",
+    "reward": {
+      "zh-Hant-TW": "3抽",
+      "zh-Hans-CN": "3抽",
+      "en": "3 Draw",
+      "ja-JP": "ガチャ券×3",
+      "ko-KR": "3뽑"
+    },
+    "status": "expired",
+    "expiry_date": "2025/7/20",
+    "image_url": "https://pbs.twimg.com/media/GwG3TNOaIAA05wL?format=jpg"
+  },
+  {
+    "code": "BD2BW2025",
+    "reward": {
+      "zh-Hant-TW": "600鑽",
+      "zh-Hans-CN": "600钻",
+      "en": "600 Dias",
+      "ja-JP": "600ダイヤ",
+      "ko-KR": "600다이아"
+    },
+    "status": "expired",
+    "expiry_date": "2025/8/10",
+    "image_url": null
+  },
+  {
+    "code": "2025BD2JUL",
+    "reward": {
+      "zh-Hant-TW": "2抽",
+      "zh-Hans-CN": "2抽",
+      "en": "2 Draw",
+      "ja-JP": "ガチャ券×2",
+      "ko-KR": "2뽑"
+    },
+    "status": "limited",
+    "expiry_date": "2025/8/1",
+    "image_url": null
+  },
+  {
+    "code": "BD2RADIO0701",
+    "reward": {
+      "zh-Hant-TW": "3抽",
+      "zh-Hans-CN": "3抽",
+      "en": "3 Draw",
+      "ja-JP": "ガチャ券×3",
+      "ko-KR": "3뽑"
+    },
+    "status": "limited",
+    "expiry_date": "2025/8/31",
+    "image_url": null
+  },
+  {
+    "code": "BD2025SUMMER",
+    "reward": {
+      "zh-Hant-TW": "最高級契約書",
+      "zh-Hans-CN": "最高级契约书",
+      "en": "5* Contract",
+      "ja-JP": "最高級スカウト契約書",
+      "ko-KR": "최고급 영입서"
+    },
+    "status": "active",
+    "expiry_date": null,
+    "image_url": null
+  },
+  {
+    "code": "Waiting4legend",
+    "reward": {
+      "zh-Hant-TW": "頂級毒蛇之手",
+      "zh-Hans-CN": "顶级毒蛇之手",
+      "en": "Venomous Touch III",
+      "ja-JP": "最高級毒蛇の手",
+      "ko-KR": "최고급 독사"
+    },
+    "status": "permanent",
+    "expiry_date": null,
+    "image_url": null
+  }
+]
+接口2：
+请求：fetch("https://loj2urwaua.execute-api.ap-northeast-1.amazonaws.com/prod/coupon", {
+  "headers": {
+    "accept": "*/*",
+    "accept-language": "zh-CN,zh;q=0.9",
+    "cache-control": "max-age=0",
+    "content-type": "application/json",
+    "priority": "u=1, i",
+    "sec-ch-ua": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "cross-site"
+  },
+  "referrer": "https://redeem.bd2.pmang.cloud/",
+  "body": "{\"appId\":\"bd2-live\",\"userId\":\"Guest_11090136\",\"code\":\"BD2RADIODARIAN\"}",
+  "method": "POST",
+  "mode": "cors",
+  "credentials": "omit"
+});
+响应：{
+  "requestId": "dd1c2c3f-10e2-4784-a825-93f36f134d24",
+  "name": "AppError",
+  "errorCode": "AlreadyUsed",
+  "error": "AlreadyUsed",
+  "message": "이미 사용한 쿠폰입니다. (키워드)",
+  "statusCode": 400,
+  "stack": "AppError: 이미 사용한 쿠폰입니다. (키워드)\n    at createError (/redeem-backend/src/utils/create-error.ts:121:10)\n    at CouponValidator.checkKeywordUsed (/redeem-backend/src/services/coupon-validator.ts:97:14)\n    at CouponValidator.tryCheckConditions (/redeem-backend/src/services/coupon-validator.ts:44:16)\n    at baseHandler (/redeem-backend/src/index.ts:288:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async runRequest (/node_modules/@middy/core/index.js:192:26)"
+}

@@ -1,0 +1,189 @@
+接口1：
+请求：fetch("https://securetoken.googleapis.com/v1/token?key=AIzaSyCrqs43yrhsdBlbdzdq0HrCaSt5V9sNPwU", {
+  "headers": {
+    "accept": "*/*",
+    "accept-language": "zh-CN,zh;q=0.9",
+    "content-type": "application/x-www-form-urlencoded",
+    "priority": "u=1, i",
+    "sec-ch-ua": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "cross-site",
+    "x-browser-channel": "stable",
+    "x-browser-copyright": "Copyright 2025 Google LLC. All Rights reserved.",
+    "x-browser-validation": "UujAs0GAwdnCJ9nvrswZ+O+oco0=",
+    "x-browser-year": "2025",
+    "x-client-data": "CIm2yQEIorbJAQipncoBCOvmygEIk6HLAQiFoM0BCPiLzwEIkqTPARjxos8B"
+  },
+  "body": "grant_type=refresh_token&refresh_token=AMf-vBwYTycAZGOYev2Qgvc9_FgIgqoRg2l7nDAffVlHSyHdhnx-kP5P_m5EKwLENDaPMVJF4kK9sCUCDN7MVbomSFEwBOMkNm8EfTrIqGd3w5ZOl4bSiFblw2t2LEpFGnNnNWDWVQQkzh1yBC3f7zuMrQSdzjuMHox6MtcBPoKF6BVn8VZSw9rEc2FuOpkM1hdpMSEFtpg-2xKuYdoyaKiI4vxXDaNEdMrDWL3fmyggGWLMKQpM6VDrZTY6fsmukUpCycaEpUgKJupDLW8TrBd55wfXyLO_wKSS0iFu1mYsoP2CI5mjKu_dX1W9-TyES02uubYDagystU60RvoZ6QojN4LlnjHFG3cooU-ug_j0jKv23Be-947saxUp-fbxqTHnfLGNeelzc7PGrZdA--HT9U8PcQsncw",
+  "method": "POST",
+  "mode": "cors",
+  "credentials": "omit"
+});
+响应：{
+    "access_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImEzOGVhNmEwNDA4YjBjYzVkYTE4OWRmYzg4ODgyZDBmMWI3ZmJmMGUiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiS2luZyB3YW5nIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0tBUDF5ZHJTYjRsWUt1UDY0bk81TWFSX1Y2MC1sejFQWjJYSEhYX2VmaWdRPXM5Ni1jIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL2Jyb3duZHVzdDItODM5Y2YiLCJhdWQiOiJicm93bmR1c3QyLTgzOWNmIiwiYXV0aF90aW1lIjoxNzY3MDAyOTY5LCJ1c2VyX2lkIjoiZ0RTZmlXbG9yQVZ3bXhzZnc1WU1HbHNXVWZiMiIsInN1YiI6ImdEU2ZpV2xvckFWd214c2Z3NVlNR2xzV1VmYjIiLCJpYXQiOjE3NjcwMTE4MjUsImV4cCI6MTc2NzAxNTQyNSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJnb29nbGUuY29tIjpbIjEwOTI2OTcyMTU0OTEwMDMyOTQ5MSJdfSwic2lnbl9pbl9wcm92aWRlciI6Imdvb2dsZS5jb20ifX0.ImsUdJMaAFWoO_uGxa67WmLdm2ZJURUUXmtTDMvBuAj1nEBeDDUGKqDbVvMOVCbEn-3y049ZBX1aOnH2qjVhma9qYM5qVXGJlGpeXtBFf9a_bqpVun-UmVjWtTC8SHQ4tAlIWl7d8TBHl-y0p9TcJ8kNu-js9I-A9HksnBFZC8UskITXOGpUP3r5ovLq0P_MU7Z-xh5691_Wp5vYq2OcxwL6-8TmaHJaGJ3p7y2h6izYE9g831phjLTflJB06QSQ_gX0qoqX217kdPKdKS8Pq-6iEg8DOXUGAR3vp4dOz8_plEAxzalWwvNLGcCMIRMJxLEXCwcgEHB-JRr895HcbA",
+    "expires_in": "3600",
+    "token_type": "Bearer",
+    "refresh_token": "AMf-vBwYTycAZGOYev2Qgvc9_FgIgqoRg2l7nDAffVlHSyHdhnx-kP5P_m5EKwLENDaPMVJF4kK9sCUCDN7MVbomSFEwBOMkNm8EfTrIqGd3w5ZOl4bSiFblw2t2LEpFGnNnNWDWVQQkzh1yBC3f7zuMrQSdzjuMHox6MtcBPoKF6BVn8VZSw9rEc2FuOpkM1hdpMSEFtpg-2xKuYdoyaKiI4vxXDaNEdMrDWL3fmyggGWLMKQpM6VDrZTY6fsmukUpCycaEpUgKJupDLW8TrBd55wfXyLO_wKSS0iFu1mYsoP2CI5mjKu_dX1W9-TyES02uubYDagystU60RvoZ6QojN4LlnjHFG3cooU-ug_j0jKv23Be-947saxUp-fbxqTHnfLGNeelzc7PGrZdA--HT9U8PcQsncw",
+    "id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImEzOGVhNmEwNDA4YjBjYzVkYTE4OWRmYzg4ODgyZDBmMWI3ZmJmMGUiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiS2luZyB3YW5nIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0tBUDF5ZHJTYjRsWUt1UDY0bk81TWFSX1Y2MC1sejFQWjJYSEhYX2VmaWdRPXM5Ni1jIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL2Jyb3duZHVzdDItODM5Y2YiLCJhdWQiOiJicm93bmR1c3QyLTgzOWNmIiwiYXV0aF90aW1lIjoxNzY3MDAyOTY5LCJ1c2VyX2lkIjoiZ0RTZmlXbG9yQVZ3bXhzZnc1WU1HbHNXVWZiMiIsInN1YiI6ImdEU2ZpV2xvckFWd214c2Z3NVlNR2xzV1VmYjIiLCJpYXQiOjE3NjcwMTE4MjUsImV4cCI6MTc2NzAxNTQyNSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJnb29nbGUuY29tIjpbIjEwOTI2OTcyMTU0OTEwMDMyOTQ5MSJdfSwic2lnbl9pbl9wcm92aWRlciI6Imdvb2dsZS5jb20ifX0.ImsUdJMaAFWoO_uGxa67WmLdm2ZJURUUXmtTDMvBuAj1nEBeDDUGKqDbVvMOVCbEn-3y049ZBX1aOnH2qjVhma9qYM5qVXGJlGpeXtBFf9a_bqpVun-UmVjWtTC8SHQ4tAlIWl7d8TBHl-y0p9TcJ8kNu-js9I-A9HksnBFZC8UskITXOGpUP3r5ovLq0P_MU7Z-xh5691_Wp5vYq2OcxwL6-8TmaHJaGJ3p7y2h6izYE9g831phjLTflJB06QSQ_gX0qoqX217kdPKdKS8Pq-6iEg8DOXUGAR3vp4dOz8_plEAxzalWwvNLGcCMIRMJxLEXCwcgEHB-JRr895HcbA",
+    "user_id": "gDSfiWlorAVwmxsfw5YMGlsWUfb2",
+    "project_id": "564019586517"
+}
+接口2
+请求：fetch("https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyCrqs43yrhsdBlbdzdq0HrCaSt5V9sNPwU", {
+  "headers": {
+    "accept": "*/*",
+    "accept-language": "zh-CN,zh;q=0.9",
+    "content-type": "application/json",
+    "priority": "u=1, i",
+    "sec-ch-ua": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "cross-site",
+    "x-browser-channel": "stable",
+    "x-browser-copyright": "Copyright 2025 Google LLC. All Rights reserved.",
+    "x-browser-validation": "UujAs0GAwdnCJ9nvrswZ+O+oco0=",
+    "x-browser-year": "2025",
+    "x-client-data": "CKW1yQEIk7bJAQimtskBCKmdygEIpOHKAQiUocsBCIWgzQEIkaTPAQ==",
+    "x-client-version": "Chrome/JsCore/9.21.0/FirebaseCore-web",
+    "x-firebase-gmpid": "1:564019586517:web:43d8149f2b36a0692a895c"
+  },
+  "body": "{\"idToken\":\"eyJhbGciOiJSUzI1NiIsImtpZCI6Ijk4OGQ1YTM3OWI3OGJkZjFlNTBhNDA5MTEzZjJiMGM3NWU0NTJlNDciLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiS2luZyB3YW5nIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0tBUDF5ZHJTYjRsWUt1UDY0bk81TWFSX1Y2MC1sejFQWjJYSEhYX2VmaWdRPXM5Ni1jIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL2Jyb3duZHVzdDItODM5Y2YiLCJhdWQiOiJicm93bmR1c3QyLTgzOWNmIiwiYXV0aF90aW1lIjoxNzY3MDEwMTk1LCJ1c2VyX2lkIjoiZ0RTZmlXbG9yQVZ3bXhzZnc1WU1HbHNXVWZiMiIsInN1YiI6ImdEU2ZpV2xvckFWd214c2Z3NVlNR2xzV1VmYjIiLCJpYXQiOjE3NjcwMTAxOTUsImV4cCI6MTc2NzAxMzc5NSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJnb29nbGUuY29tIjpbIjEwOTI2OTcyMTU0OTEwMDMyOTQ5MSJdfSwic2lnbl9pbl9wcm92aWRlciI6Imdvb2dsZS5jb20ifX0.lYK3qwS5jGPdYKIxgHoZg0iprPa8nAHUefulL30ApA6EZBe4OZq6HpTXzsijdjnxS3Oc61P4XyT4mdWLtgJ41-hqyYdIIzhb7EBOMv_2YT0pF-SCzs_qTg70BqxbLaV3KCxZf-1SR0E2MomDpyIPGT8CW0-5ZV4JP5oa_ZkndvoLypQCemDGeMy3fR9djUVwzYDmpxRKL8mRniyTsBLTp4wg0aO3dPRJW1HJT_DA1AseHpv59eZ1u-0ukSfxTYqcgMzVlNMnA6aUvlxWapZ93hZprsu4D9NlT8H9m4lchyOVCApL8qVHf5RWQhVoi5AfA31dt0-T8cbkTk3utjhdyg\"}",
+  "method": "POST",
+  "mode": "cors",
+  "credentials": "omit"
+});
+响应：{
+  "kind": "identitytoolkit#GetAccountInfoResponse",
+  "users": [
+    {
+      "localId": "gDSfiWlorAVwmxsfw5YMGlsWUfb2",
+      "displayName": "King wang",
+      "photoUrl": "https://lh3.googleusercontent.com/a/ACg8ocKAP1ydrSb4lYKuP64nO5MaR_V60-lz1PZ2XHHX_efigQ=s96-c",
+      "providerUserInfo": [
+        {
+          "providerId": "google.com",
+          "displayName": "King wang",
+          "photoUrl": "https://lh3.googleusercontent.com/a/ACg8ocJ1EsNecpvmXL-akTYuM0aujrlCNzS7Q1rI9OoLXrbNn8YKqg4=s96-c",
+          "federatedId": "109269721549100329491",
+          "rawId": "109269721549100329491"
+        }
+      ],
+      "validSince": "1709086089",
+      "lastLoginAt": "1767010195561",
+      "createdAt": "1709086089703",
+      "lastRefreshAt": "2025-12-29T12:09:55.561Z"
+    }
+  ]
+}
+接口3
+请求：fetch("https://www.neonapi.com/api/accounts/v3/weblogin/account", {
+  "headers": {
+    "accept": "*/*",
+    "accept-language": "zh-CN,zh;q=0.9",
+    "content-type": "application/json; charset=UTF-8",
+    "priority": "u=1, i",
+    "sec-ch-ua": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "cross-site"
+  },
+  "referrer": "https://webshop.browndust2.global/",
+  "body": "{\"provider\":\"FIREBASE\",\"provider_user_srl\":\"gDSfiWlorAVwmxsfw5YMGlsWUfb2\",\"provider_sns\":\"GOOGLE\",\"provider_sns_srl\":\"109269721549100329491\",\"app_id\":\"5063\",\"provider_user_jwt\":\"eyJhbGciOiJSUzI1NiIsImtpZCI6Ijk4OGQ1YTM3OWI3OGJkZjFlNTBhNDA5MTEzZjJiMGM3NWU0NTJlNDciLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiS2luZyB3YW5nIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0tBUDF5ZHJTYjRsWUt1UDY0bk81TWFSX1Y2MC1sejFQWjJYSEhYX2VmaWdRPXM5Ni1jIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL2Jyb3duZHVzdDItODM5Y2YiLCJhdWQiOiJicm93bmR1c3QyLTgzOWNmIiwiYXV0aF90aW1lIjoxNzY3MDEwMTk1LCJ1c2VyX2lkIjoiZ0RTZmlXbG9yQVZ3bXhzZnc1WU1HbHNXVWZiMiIsInN1YiI6ImdEU2ZpV2xvckFWd214c2Z3NVlNR2xzV1VmYjIiLCJpYXQiOjE3NjcwMTAxOTUsImV4cCI6MTc2NzAxMzc5NSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJnb29nbGUuY29tIjpbIjEwOTI2OTcyMTU0OTEwMDMyOTQ5MSJdfSwic2lnbl9pbl9wcm92aWRlciI6Imdvb2dsZS5jb20ifX0.lYK3qwS5jGPdYKIxgHoZg0iprPa8nAHUefulL30ApA6EZBe4OZq6HpTXzsijdjnxS3Oc61P4XyT4mdWLtgJ41-hqyYdIIzhb7EBOMv_2YT0pF-SCzs_qTg70BqxbLaV3KCxZf-1SR0E2MomDpyIPGT8CW0-5ZV4JP5oa_ZkndvoLypQCemDGeMy3fR9djUVwzYDmpxRKL8mRniyTsBLTp4wg0aO3dPRJW1HJT_DA1AseHpv59eZ1u-0ukSfxTYqcgMzVlNMnA6aUvlxWapZ93hZprsu4D9NlT8H9m4lchyOVCApL8qVHf5RWQhVoi5AfA31dt0-T8cbkTk3utjhdyg\",\"mob_svc_yn\":\"N\",\"privacy_yn\":\"N\",\"ad_yn\":\"N\",\"ad_night_yn\":\"N\",\"release_ymd\":\"251118\"}",
+  "method": "POST",
+  "mode": "cors",
+  "credentials": "omit"
+});
+响应：{
+    "value": "eyJraWQiOiJORU9OIiwiYWxnIjoiSFMyNTYifQ.eyJpc3MiOiJHT09HTEUiLCJhdWQiOiI1MDYzIiwic3ViIjoiNkhZT1BMTTBQQ25MN2hSMXllaDMzaUMzaWFIbXhZUlVNZ3k5T1hIaC9yY25ad3NuaE1OOWZEdG5DRGVISzBIdmx1ZDZnbFF5VjlIMEQ2NTdvdVNlTGJTVTRaY05jTGxmZ0dEODJiK0hmWVh1NFQzWjNDN2pxWm1tZ01wSDRVY282UFFZeFZOamxkMFZHdnVlS1E5THVRPT0iLCJleHAiOjE3NjcwMTM3OTgsImlhdCI6MTc2NzAxMDE5OH0.Rk2dNxKKGVBW1ZxQ9941ZQY4dkBCUD6kOmtub3BsJIA",
+    "result_code": "000",
+    "result_msg": "API_OK"
+}
+接口4
+请求：fetch("https://bd2-webshop-api.bd2.pmang.cloud/api/login", {
+  "headers": {
+    "accept": "application/json",
+    "accept-language": "zh-CN,zh;q=0.9",
+    "content-type": "application/json",
+    "priority": "u=1, i",
+    "sec-ch-ua": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "cross-site"
+  },
+  "referrer": "https://webshop.browndust2.global/",
+  "body": "{\"token\":\"eyJraWQiOiJORU9OIiwiYWxnIjoiSFMyNTYifQ.eyJpc3MiOiJHT09HTEUiLCJhdWQiOiI1MDYzIiwic3ViIjoiNkhZT1BMTTBQQ25MN2hSMXllaDMzaUMzaWFIbXhZUlVNZ3k5T1hIaC9yY25ad3NuaE1OOWZEdG5DRGVISzBIdmx1ZDZnbFF5VjlIMEQ2NTdvdVNlTGJTVTRaY05jTGxmZ0dEODJiK0hmWVh1NFQzWjNDN2pxWm1tZ01wSDRVY282UFFZeFZOamxkMFZHdnVlS1E5THVRPT0iLCJleHAiOjE3NjcwMTM3OTgsImlhdCI6MTc2NzAxMDE5OH0.Rk2dNxKKGVBW1ZxQ9941ZQY4dkBCUD6kOmtub3BsJIA\",\"nationCode\":\"\"}",
+  "method": "POST",
+  "mode": "cors",
+  "credentials": "omit"
+});
+响应：{
+  "code": "OK",
+  "message": "success",
+  "data": {
+    "accessToken": "4eb0643a81a4c404895dc403950854f60b2b9fcc7d546976ce80f5f691bb3f70173c118e18fa514cdf827e52122409fb37ca68691bcce3d4986ce113fa72216c974ff3cf0842a5a0dcb1ad01c469e1a15d549962933884109fc4ae6ffdf7e906bbad8ecccf3f332399bca5071747b91d34669fe1cb89c5d014cb2d39f63936356685e597e59186d428f059c5854922ca5ff784a8186d94a52a27779ac3ee77eeb9400069a4d922a11506393186ffb69fce0411822e2eb538a69b0dcda9fbb12189882c521f3d23f9b935b7148c8b168ed8177344e09720102a5455b5666d539aa93ca264f651c4b7e066630c798e37315fd17d459eb670ea9c546ab02678616cd1281137bd09e0fa9170f68a74cb6fe710fe01bfdea4aad7659d7e09158bd04eb2b27b0c9d8dc2f12d026658db2c797632fbf1ca272eb82ed85f4629a06f5f20c056bf8fc431802331736f95620084bea14bfc2c968c8a70a603f8c7f70009ca78ac9287fbb1fa45ffaed53c683cd96055b3fd0c116e9c755ad7d0584ef9549612f68ddb909ad109df0a7f0b7dfc90115a30e5846d03af6539709111b83dbe2c79b8b073ce8939260457b2278aafdd05edeccdabc197f3b313ff7c0731a93d6d2cbfcb3ce252df57f1d63e5bab5f879320a40d62cb446354a3e6bee905fbdeb9149ee7c795d893adc63eca96f959ef024041cae9eb607151d9b3ac9c4085eda680dcd1cee84b58c2e6a09ceb2116c80beaacef73ef1da7b63cdb2d6992cd202769c865b5993c454e434991ae086744df8009bd656c77f663c9bc3bfbcf206c38f7a1f98f64e5c9f731433a8b81d40c49e1f4ed0734e289fd96d28532910d321b8b2a2aae8c60ef5444e24b2305692fdbb4991a25255a61b464f2553177e59b85b5413ce1d546988d29d6c12d6e6af723f498d9dec870cc5ca24e652d6c2bf9228899233bb4a725ec7205849847c25373a83935e67358682e71db3758d9640169101782f0a11a074f5f0e46d20d3963c1ae3cd92ef9f8e63b94194f5720ce4cd719b6dee85f205a7fbacc4b9be7239081e5917303cc7e535da88711c1e281a3ea161bee4f9703aac304862c9af7d98b8a7801079a1eaa5f47668f1d197a23058d83e37ea111dcef2efbfe4a16ef6547ac",
+    "memberId": 394582540,
+    "signSns": "GOOGLE",
+    "regNation": "TW",
+    "regNationCnt": 0,
+    "userId": "Guest_11090136",
+    "dateOfBirth": -1,
+    "accumulatedPaymentAmount": 0,
+    "userIndex": 11090136,
+    "receiveCouponList": []
+  }
+}
+接口5：(web商店每天签到10钻石)
+请求：fetch("https://bd2-webshop-api.bd2.pmang.cloud/api/attend", {
+  method: "POST",
+  headers: {
+    "authorization": "Bearer 4eb0643a81a4c404895dc403950854f60b2b9fcc7d546976ce80f5f691bb3f70173c118e18fa514cdf827e52122409fb37ca68691bcce3d4986ce113fa72216c974ff3cf0842a5a0dcb1ad01c469e1a15d549962933884109fc4ae6ffdf7e906bbad8ecccf3f332399bca5071747b91d34669fe1cb89c5d014cb2d39f63936356685e597e59186d428f059c5854922ca5ff784a8186d94a52a27779ac3ee77eeb9400069a4d922a11506393186ffb69fce0411822e2eb538a69b0dcda9fbb12189882c521f3d23f9b935b7148c8b168ed8177344e09720102a5455b5666d539aa93ca264f651c4b7e066630c798e37315fd17d459eb670ea9c546ab02678616cd1281137bd09e0fa9170f68a74cb6fe76686321567b3808dd9019d32e52ed60e1c29ddcf72e15fd2d0435434ddbde4d05077d05d4b66e5f8b4cc26b508a6e9af74af9917388f73218773e8b0b21930f88d08a97e6c62556901ee77050ea4bbc6704641f56f7643b5f4ee5234c8c6ee7760b666edea7eff079a147cff8626949042190258ca8eedceb92e0ebebcd5a742e425148decfddea77ff7647ccd9a83e8271b3f8a893ff9457336bc48a8d3ccefcdb781e4de4caba7e3eb87bd3f10001ff226c1789f98053ac121d86bed55f9d45001b52ef26a6f521448d7896a07c6c7c09a207683d67c3b2a0a7c24552d56dd5d3cdbafefc726d7f3ab12494edaa09a4ff922bd7d1a1bf6da803b4b604d1199db6bc8eb9e079c924b93e2d4f48f0790224f557b2b35236c40b5606d41fc7bec0179c7a39a8659ab63eb984b636dfcbbd8fa110d4062228a5188dcd5d4db840957b7524c43a241ab38ae165d3c099f8cc8aa2294e2e06c22c81b33655401031c46317f347ab0ff005ffb7a1382b600099905e124d9d19febdf3f7fe7258579c01c4ce97984e393c0ee26737d6d6013f0913c77ac3d90b05b1b9658db2cd644e7ceea36d6c87394c9eb7ffff6595b8a23ee7bf7da66005ad9cc74663f258c1572e9988f1794e1cb64587b0207103427c2d9528a45c490150792c66890b91a4989335f279a279812773adb98e3ff735b05492a165f59f81b6a373d627d3d2e189afd73da74819df6a704379171cb2a8d2fb5da2dc2348d0c95314b2d72d8527c46",
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    type: 0
+  })
+});
+响应：{
+    "code": "OK",
+    "message": "success",
+    "data": {
+        "success": false,
+        "errorType": 3,
+        "errorMsg": "[webShopAttendance] Already attendance reward. (checkDate: 2025-12-29 09:00:00, user attendanceDate: 2025-12-29 18:11:37)",
+        "requestId": "a01778b8-55ce-46a9-85a3-6d45091c30b7",
+        "lastAttendanceDate": "",
+        "rewardInfo": []
+    }
+}
+接口6：(web商店每周签到3抽)
+请求：fetch("https://bd2-webshop-api.bd2.pmang.cloud/api/attend", {
+  method: "POST",
+  headers: {
+    "authorization": "Bearer 4eb0643a81a4c404895dc403950854f60b2b9fcc7d546976ce80f5f691bb3f70173c118e18fa514cdf827e52122409fb37ca68691bcce3d4986ce113fa72216c974ff3cf0842a5a0dcb1ad01c469e1a15d549962933884109fc4ae6ffdf7e906bbad8ecccf3f332399bca5071747b91d34669fe1cb89c5d014cb2d39f63936356685e597e59186d428f059c5854922ca5ff784a8186d94a52a27779ac3ee77eeb9400069a4d922a11506393186ffb69fce0411822e2eb538a69b0dcda9fbb12189882c521f3d23f9b935b7148c8b168ed8177344e09720102a5455b5666d539aa93ca264f651c4b7e066630c798e37315fd17d459eb670ea9c546ab02678616cd1281137bd09e0fa9170f68a74cb6fe76686321567b3808dd9019d32e52ed60e1c29ddcf72e15fd2d0435434ddbde4d05077d05d4b66e5f8b4cc26b508a6e9af74af9917388f73218773e8b0b21930f88d08a97e6c62556901ee77050ea4bbc6704641f56f7643b5f4ee5234c8c6ee7760b666edea7eff079a147cff8626949042190258ca8eedceb92e0ebebcd5a742e425148decfddea77ff7647ccd9a83e8271b3f8a893ff9457336bc48a8d3ccefcdb781e4de4caba7e3eb87bd3f10001ff226c1789f98053ac121d86bed55f9d45001b52ef26a6f521448d7896a07c6c7c09a207683d67c3b2a0a7c24552d56dd5d3cdbafefc726d7f3ab12494edaa09a4ff922bd7d1a1bf6da803b4b604d1199db6bc8eb9e079c924b93e2d4f48f0790224f557b2b35236c40b5606d41fc7bec0179c7a39a8659ab63eb984b636dfcbbd8fa110d4062228a5188dcd5d4db840957b7524c43a241ab38ae165d3c099f8cc8aa2294e2e06c22c81b33655401031c46317f347ab0ff005ffb7a1382b600099905e124d9d19febdf3f7fe7258579c01c4ce97984e393c0ee26737d6d6013f0913c77ac3d90b05b1b9658db2cd644e7ceea36d6c87394c9eb7ffff6595b8a23ee7bf7da66005ad9cc74663f258c1572e9988f1794e1cb64587b0207103427c2d9528a45c490150792c66890b91a4989335f279a279812773adb98e3ff735b05492a165f59f81b6a373d627d3d2e189afd73da74819df6a704379171cb2a8d2fb5da2dc2348d0c95314b2d72d8527c46",
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    type: 1
+  })
+});
+响应：{
+    "code": "OK",
+    "message": "success",
+    "data": {
+        "success": false,
+        "errorType": 3,
+        "errorMsg": "[webShopAttendance] Already attendance reward. (checkDate: 2025-12-29 09:00:00, user attendanceDate: 2025-12-29 18:11:37)",
+        "requestId": "a01778b8-55ce-46a9-85a3-6d45091c30b7",
+        "lastAttendanceDate": "",
+        "rewardInfo": []
+    }
+}

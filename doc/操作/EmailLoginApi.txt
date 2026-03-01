@@ -1,0 +1,191 @@
+接口1：
+请求：fetch("https://www.neonapi.com/api/accounts/v3/weblogin/sendAuthEmail", {
+  "headers": {
+    "accept": "*/*",
+    "accept-language": "zh-CN,zh;q=0.9",
+    "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+    "priority": "u=1, i",
+    "sec-ch-ua": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "cross-site"
+  },
+  "referrer": "https://webshop.browndust2.global/",
+  "body": "email=508308892%40qq.com&app_id=5063&lang=zh_CN",
+  "method": "POST",
+  "mode": "cors",
+  "credentials": "omit"
+});
+响应：{
+  "value": "SUCCESS",
+  "result_code": "000",
+  "result_msg": "API_OK"
+}
+接口2：
+请求：fetch("https://www.neonapi.com/api/accounts/v3/weblogin/getCustomToken", {
+  "headers": {
+    "accept": "*/*",
+    "accept-language": "zh-CN,zh;q=0.9",
+    "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+    "priority": "u=1, i",
+    "sec-ch-ua": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "cross-site"
+  },
+  "referrer": "https://webshop.browndust2.global/",
+  "body": "email=508308892%40qq.com&pin_number=732530&app_id=5063",
+  "method": "POST",
+  "mode": "cors",
+  "credentials": "omit"
+});
+响应：{
+  "value": {
+    "successYn": true,
+    "errorMessage": "",
+    "customToken": "eyJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJodHRwczovL2lkZW50aXR5dG9vbGtpdC5nb29nbGVhcGlzLmNvbS9nb29nbGUuaWRlbnRpdHkuaWRlbnRpdHl0b29sa2l0LnYxLklkZW50aXR5VG9vbGtpdCIsImV4cCI6MTc2ODM5NzUyMCwiaWF0IjoxNzY4MzkzOTIwLCJpc3MiOiJmaXJlYmFzZS1hZG1pbnNkay1oeDZyNkBicm93bmR1c3QyLTgzOWNmLmlhbS5nc2VydmljZWFjY291bnQuY29tIiwic3ViIjoiZmlyZWJhc2UtYWRtaW5zZGstaHg2cjZAYnJvd25kdXN0Mi04MzljZi5pYW0uZ3NlcnZpY2VhY2NvdW50LmNvbSIsInVpZCI6Imw2S1lvcHVjckZTOENiYkYxU1NpQlZwVjl1MDMifQ.X0izXGiVPwmg80v9jEwjA-AEmHAnXsF04IQihUouvQECgKOjLxGcBoOpX-y4w01iR_8AHBdrHpuOuM4XE_psVeoqjDImh387IQCd_T4E1-W53Nb4QSWSRJhgidm3K7ya7daqQuFeli-ib6hufuyICWmDFiUXCQCFev8ilfRx2YXVpm32s3ttk_dYwhmM23jExiDwVK5_PQ91hLw3kZ5A7tDBvwE0y3uEcKVoriWgINmI5-t3N-Sa1VpjWdQGj2uJQJUEqhLJFiW52ouyssbdy3DiDHCIpxWbtozvwffvjb1pl8th7gotKxWu4O8xtwGCuoHM8WQkhPMyVNSY59yaQg"
+  },
+  "result_msg": "API_OK",
+  "result_code": "000"
+}
+接口3：
+请求：fetch("https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key=AIzaSyCrqs43yrhsdBlbdzdq0HrCaSt5V9sNPwU", {
+  "headers": {
+    "accept": "*/*",
+    "accept-language": "zh-CN,zh;q=0.9",
+    "content-type": "application/json",
+    "priority": "u=1, i",
+    "sec-ch-ua": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "cross-site",
+    "x-browser-channel": "stable",
+    "x-browser-copyright": "Copyright 2026 Google LLC. All Rights reserved.",
+    "x-browser-validation": "UujAs0GAwdnCJ9nvrswZ+O+oco0=",
+    "x-browser-year": "2026",
+    "x-client-data": "CKW1yQEIk7bJAQimtskBCKmdygEIpOHKAQiUocsBCIWgzQEIkaTPAQ==",
+    "x-client-version": "Chrome/JsCore/9.21.0/FirebaseCore-web",
+    "x-firebase-client": "eyJ2ZXJzaW9uIjoyLCJoZWFydGJlYXRzIjpbeyJhZ2VudCI6ImZpcmUtY29yZS8wLjkuOSBmaXJlLWNvcmUtZXNtMjAxNy8wLjkuOSBmaXJlLWpzLyBmaXJlLWpzLWFsbC1jZG4vOS4yMS4wIGZpcmUtYXV0aC8wLjIzLjEgZmlyZS1hdXRoLWVzbTIwMTcvMC4yMy4xIiwiZGF0ZXMiOlsiMjAyNi0wMS0xNCJdfV19",
+    "x-firebase-gmpid": "1:564019586517:web:43d8149f2b36a0692a895c"
+  },
+  "body": "{\"token\":\"eyJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJodHRwczovL2lkZW50aXR5dG9vbGtpdC5nb29nbGVhcGlzLmNvbS9nb29nbGUuaWRlbnRpdHkuaWRlbnRpdHl0b29sa2l0LnYxLklkZW50aXR5VG9vbGtpdCIsImV4cCI6MTc2ODM5NzUyMCwiaWF0IjoxNzY4MzkzOTIwLCJpc3MiOiJmaXJlYmFzZS1hZG1pbnNkay1oeDZyNkBicm93bmR1c3QyLTgzOWNmLmlhbS5nc2VydmljZWFjY291bnQuY29tIiwic3ViIjoiZmlyZWJhc2UtYWRtaW5zZGstaHg2cjZAYnJvd25kdXN0Mi04MzljZi5pYW0uZ3NlcnZpY2VhY2NvdW50LmNvbSIsInVpZCI6Imw2S1lvcHVjckZTOENiYkYxU1NpQlZwVjl1MDMifQ.X0izXGiVPwmg80v9jEwjA-AEmHAnXsF04IQihUouvQECgKOjLxGcBoOpX-y4w01iR_8AHBdrHpuOuM4XE_psVeoqjDImh387IQCd_T4E1-W53Nb4QSWSRJhgidm3K7ya7daqQuFeli-ib6hufuyICWmDFiUXCQCFev8ilfRx2YXVpm32s3ttk_dYwhmM23jExiDwVK5_PQ91hLw3kZ5A7tDBvwE0y3uEcKVoriWgINmI5-t3N-Sa1VpjWdQGj2uJQJUEqhLJFiW52ouyssbdy3DiDHCIpxWbtozvwffvjb1pl8th7gotKxWu4O8xtwGCuoHM8WQkhPMyVNSY59yaQg\",\"returnSecureToken\":true}",
+  "method": "POST",
+  "mode": "cors",
+  "credentials": "omit"
+});
+响应：{
+  "kind": "identitytoolkit#VerifyCustomTokenResponse",
+  "idToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjA4MmU5NzVlMDdkZmE0OTYwYzdiN2I0ZmMxZDEwZjkxNmRjMmY1NWIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vYnJvd25kdXN0Mi04MzljZiIsImF1ZCI6ImJyb3duZHVzdDItODM5Y2YiLCJhdXRoX3RpbWUiOjE3NjgzOTM5MjEsInVzZXJfaWQiOiJsNktZb3B1Y3JGUzhDYmJGMVNTaUJWcFY5dTAzIiwic3ViIjoibDZLWW9wdWNyRlM4Q2JiRjFTU2lCVnBWOXUwMyIsImlhdCI6MTc2ODM5MzkyMSwiZXhwIjoxNzY4Mzk3NTIxLCJlbWFpbCI6IjUwODMwODg5MkBxcS5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyI1MDgzMDg4OTJAcXEuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoiY3VzdG9tIn19.wg-ZXh1_8mwpy3iQI4Uxmg6uzeo8TXj8SXTVD6ZiIV90_g6lXei4eXvXVk0PWXOpcPTTGToHlsZuc97PTacs9Iw4VRzMrsp4CDANTJ1zV4_sVYsZ9lezlpVgE80ID9EOXWl4VJSXphX73tVrHSwhpkP-pPRQ2d-rhjk1Ix_rlE9Dpg_c-o_Lq3Xb-o42qpUmcYApY0chweR-In0D6f2-FSpGU00OsylOvwQGq6fLhmCN8qBY0n2x84F74hW1DUdMaYkUxrrnVbMeHNaw855kpG_LZA1nleZ1B6a6yGZjTSgOO7zAsK7oK1rghtQ5ZMn34iA77F7L_-c6vNwkxHRC5A",
+  "refreshToken": "AMf-vBxTi0TACufWVrNkcC4LOiiSp8CTKYo5Bp12WnCp_pUrUSx2pNyvvoOyNSkE9PT5-hEDSig4vlXCXfOwuCfiv9XWUQeoH6lMk2skbB2ttWhL2LyDuTMbO-3bO460bjAkn7GUiQbiwO_6kCQq8aUfSlHOc8-50qEU6glWJiISc4dFzmsWaZvHRoEKsu0e0gB3zP0G5sPI",
+  "expiresIn": "3600",
+  "isNewUser": false
+}
+接口4：
+请求：fetch("https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyCrqs43yrhsdBlbdzdq0HrCaSt5V9sNPwU", {
+  "headers": {
+    "accept": "*/*",
+    "accept-language": "zh-CN,zh;q=0.9",
+    "content-type": "application/json",
+    "priority": "u=1, i",
+    "sec-ch-ua": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "cross-site",
+    "x-browser-channel": "stable",
+    "x-browser-copyright": "Copyright 2026 Google LLC. All Rights reserved.",
+    "x-browser-validation": "UujAs0GAwdnCJ9nvrswZ+O+oco0=",
+    "x-browser-year": "2026",
+    "x-client-data": "CKW1yQEIk7bJAQimtskBCKmdygEIpOHKAQiUocsBCIWgzQEIkaTPAQ==",
+    "x-client-version": "Chrome/JsCore/9.21.0/FirebaseCore-web",
+    "x-firebase-gmpid": "1:564019586517:web:43d8149f2b36a0692a895c"
+  },
+  "body": "{\"idToken\":\"eyJhbGciOiJSUzI1NiIsImtpZCI6IjA4MmU5NzVlMDdkZmE0OTYwYzdiN2I0ZmMxZDEwZjkxNmRjMmY1NWIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vYnJvd25kdXN0Mi04MzljZiIsImF1ZCI6ImJyb3duZHVzdDItODM5Y2YiLCJhdXRoX3RpbWUiOjE3NjgzOTM5MjEsInVzZXJfaWQiOiJsNktZb3B1Y3JGUzhDYmJGMVNTaUJWcFY5dTAzIiwic3ViIjoibDZLWW9wdWNyRlM4Q2JiRjFTU2lCVnBWOXUwMyIsImlhdCI6MTc2ODM5MzkyMSwiZXhwIjoxNzY4Mzk3NTIxLCJlbWFpbCI6IjUwODMwODg5MkBxcS5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyI1MDgzMDg4OTJAcXEuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoiY3VzdG9tIn19.wg-ZXh1_8mwpy3iQI4Uxmg6uzeo8TXj8SXTVD6ZiIV90_g6lXei4eXvXVk0PWXOpcPTTGToHlsZuc97PTacs9Iw4VRzMrsp4CDANTJ1zV4_sVYsZ9lezlpVgE80ID9EOXWl4VJSXphX73tVrHSwhpkP-pPRQ2d-rhjk1Ix_rlE9Dpg_c-o_Lq3Xb-o42qpUmcYApY0chweR-In0D6f2-FSpGU00OsylOvwQGq6fLhmCN8qBY0n2x84F74hW1DUdMaYkUxrrnVbMeHNaw855kpG_LZA1nleZ1B6a6yGZjTSgOO7zAsK7oK1rghtQ5ZMn34iA77F7L_-c6vNwkxHRC5A\"}",
+  "method": "POST",
+  "mode": "cors",
+  "credentials": "omit"
+});
+响应：{
+  "kind": "identitytoolkit#GetAccountInfoResponse",
+  "users": [
+    {
+      "localId": "l6KYopucrFS8CbbF1SSiBVpV9u03",
+      "email": "508308892@qq.com",
+      "emailVerified": true,
+      "validSince": "1765886747",
+      "disabled": false,
+      "lastLoginAt": "1768393921576",
+      "createdAt": "1765886747034",
+      "customAuth": true,
+      "lastRefreshAt": "2026-01-14T12:32:01.576Z"
+    }
+  ]
+}
+接口5：
+请求：fetch("https://www.neonapi.com/api/accounts/v3/weblogin/account", {
+  "headers": {
+    "accept": "*/*",
+    "accept-language": "zh-CN,zh;q=0.9",
+    "content-type": "application/json; charset=UTF-8",
+    "priority": "u=1, i",
+    "sec-ch-ua": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "cross-site"
+  },
+  "referrer": "https://webshop.browndust2.global/",
+  "body": "{\"provider\":\"FIREBASE\",\"provider_user_srl\":\"l6KYopucrFS8CbbF1SSiBVpV9u03\",\"provider_sns\":\"EMAIL\",\"provider_sns_srl\":\"508308892@qq.com\",\"app_id\":\"5063\",\"provider_user_jwt\":\"eyJhbGciOiJSUzI1NiIsImtpZCI6IjA4MmU5NzVlMDdkZmE0OTYwYzdiN2I0ZmMxZDEwZjkxNmRjMmY1NWIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vYnJvd25kdXN0Mi04MzljZiIsImF1ZCI6ImJyb3duZHVzdDItODM5Y2YiLCJhdXRoX3RpbWUiOjE3NjgzOTM5MjEsInVzZXJfaWQiOiJsNktZb3B1Y3JGUzhDYmJGMVNTaUJWcFY5dTAzIiwic3ViIjoibDZLWW9wdWNyRlM4Q2JiRjFTU2lCVnBWOXUwMyIsImlhdCI6MTc2ODM5MzkyMSwiZXhwIjoxNzY4Mzk3NTIxLCJlbWFpbCI6IjUwODMwODg5MkBxcS5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyI1MDgzMDg4OTJAcXEuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoiY3VzdG9tIn19.wg-ZXh1_8mwpy3iQI4Uxmg6uzeo8TXj8SXTVD6ZiIV90_g6lXei4eXvXVk0PWXOpcPTTGToHlsZuc97PTacs9Iw4VRzMrsp4CDANTJ1zV4_sVYsZ9lezlpVgE80ID9EOXWl4VJSXphX73tVrHSwhpkP-pPRQ2d-rhjk1Ix_rlE9Dpg_c-o_Lq3Xb-o42qpUmcYApY0chweR-In0D6f2-FSpGU00OsylOvwQGq6fLhmCN8qBY0n2x84F74hW1DUdMaYkUxrrnVbMeHNaw855kpG_LZA1nleZ1B6a6yGZjTSgOO7zAsK7oK1rghtQ5ZMn34iA77F7L_-c6vNwkxHRC5A\",\"mob_svc_yn\":\"N\",\"privacy_yn\":\"N\",\"ad_yn\":\"N\",\"ad_night_yn\":\"N\",\"release_ymd\":\"251118\"}",
+  "method": "POST",
+  "mode": "cors",
+  "credentials": "omit"
+});
+响应：{
+  "value": "eyJraWQiOiJORU9OIiwiYWxnIjoiSFMyNTYifQ.eyJpc3MiOiJFTUFJTCIsImF1ZCI6IjUwNjMiLCJzdWIiOiJjU0RmMDk3bnZzUFJoMCtuQlhhVnk3SHp5V0J0TDV3VStZeTRyVERaREVFUVl4YjdZems2YlM0a0tHZmF3MmxDVkxGM2pmdGdlWnkvT25hcW1OSnIxTjdYOW10VUptb1M0SVNNc2RnWnEzaWxVcW0vYzZrNm5NWURJYWFJR0pWdCIsImV4cCI6MTc2ODM5NzUyMywiaWF0IjoxNzY4MzkzOTIzfQ.AnzuBGacOTOCvzr2DB4dye76gDuaQjLZ7zNN89O1M1A",
+  "result_code": "000",
+  "result_msg": "API_OK"
+}
+接口6：
+请求：fetch("https://bd2-webshop-api.bd2.pmang.cloud/api/login", {
+  "headers": {
+    "accept": "application/json",
+    "accept-language": "zh-CN,zh;q=0.9",
+    "content-type": "application/json",
+    "priority": "u=1, i",
+    "sec-ch-ua": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "cross-site"
+  },
+  "referrer": "https://webshop.browndust2.global/",
+  "body": "{\"token\":\"eyJraWQiOiJORU9OIiwiYWxnIjoiSFMyNTYifQ.eyJpc3MiOiJFTUFJTCIsImF1ZCI6IjUwNjMiLCJzdWIiOiJjU0RmMDk3bnZzUFJoMCtuQlhhVnk3SHp5V0J0TDV3VStZeTRyVERaREVFUVl4YjdZems2YlM0a0tHZmF3MmxDVkxGM2pmdGdlWnkvT25hcW1OSnIxTjdYOW10VUptb1M0SVNNc2RnWnEzaWxVcW0vYzZrNm5NWURJYWFJR0pWdCIsImV4cCI6MTc2ODM5NzUyMywiaWF0IjoxNzY4MzkzOTIzfQ.AnzuBGacOTOCvzr2DB4dye76gDuaQjLZ7zNN89O1M1A\",\"nationCode\":\"\"}",
+  "method": "POST",
+  "mode": "cors",
+  "credentials": "omit"
+});
+响应：{
+  "code": "OK",
+  "message": "success",
+  "data": {
+    "accessToken": "4eb0643a81a4c404895dc403950854f60b2b9fcc7d546976ce80f5f691bb3f70173c118e18fa514cdf827e52122409fb37ca68691bcce3d4986ce113fa72216c974ff3cf0842a5a0dcb1ad01c469e1a15d549962933884109fc4ae6ffdf7e906bbad8ecccf3f332399bca5071747b91d872a72d5fdedd477fc29b258abd17a25113681c4b69dd8f4c41fbb5f6bc8cbde1ed7f9f4acaca7121501e0747c2629b4dd5a3fa0a9e9b4e1139edc532172c0e49caa57e567d571f90e024a111c64be5e6cb3eea16e77431620ff33c484de146ae54093856ccf3697ebba4b8d27b048a1b8133baee30f008c9bfc0c7d9ace003e39007adc17e38f62014f1ea717c204aae0cf31ab957f4edd7206003e5b936765da5f6deeb3d9f4fcc87f48cefd62ed5a7c6f1b65ee8d3e57153cfd4c51b7be5d7995cba2503c9fd7d7d21079e486e2887a4d92a7492f2f9c387af64c02707b7b7db79093aa094b231c0984e0bc2a346f13c67a714776d8d41ecacfd9c4b44b8e90a5e0a5a16db30f1f02ad5a009a322d0548691855d6791496c2111be4ecf19b27d2e1c9bb549f069ee69fb17db2ea4a292e3537381b779d76f270b1e817d67731493ac7562fd1a48be9f73d9e594ed9962b87b48fa471dc1d54369f8c7b3cefb67b820a62645ef7ff8a08dc4983cc86486b5322f5da3798308a33bf6c682406e8cdd212ef2ea06817b2a197f938c73a2fc539d1bb4e0e24960805a2494db980f7cb76ff47f6a2cd3b6d3313ecf9c06d5974ba17bdea2ecb237e5f932ea27a368235e782a5cd46223a82180ee735b7d7949f4ce26b2400d380b2aac9ea747ae48dcd2ed3937609d2c2ade3379eb7e283c2a53153541e3c9d56c278273f6d84bfa2158fb5186e3eaaf4d33f183c34dc5df80e89d3d7693bc4510914709b7b93961e4ca238e01c353d074402aec85941015182c315b8c71d7644c620ef003e645ee396f888754004cee71e6f182382f7bdb07ef8ff3a2627b283ebec48d008823e1732c1e3c85e12a8d20a2320693874132614dab85f1fea3d50602a03d01d7ce5eddc052da80639c96590f2972a7bc6fa",
+    "memberId": 429184947,
+    "signSns": "EMAIL",
+    "regNation": "HK",
+    "regNationCnt": 0,
+    "userId": "母猪调教师",
+    "dateOfBirth": -1,
+    "accumulatedPaymentAmount": 0,
+    "userIndex": 12019334,
+    "receiveCouponList": []
+  }
+}

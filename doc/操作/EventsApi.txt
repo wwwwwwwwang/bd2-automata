@@ -1,0 +1,295 @@
+接口：获取活动信息
+请求：fetch("https://bd2-webshop-api.bd2.pmang.cloud/api/popup", {
+  "headers": {
+    "accept": "application/json",
+    "accept-language": "zh-CN,zh;q=0.9",
+    "priority": "u=1, i",
+    "sec-ch-ua": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "cross-site"
+  },
+  "referrer": "https://webshop.browndust2.global/",
+  "body": null,
+  "method": "GET",
+  "mode": "cors",
+  "credentials": "omit"
+});
+响应：{
+  "code": "OK",
+  "message": "success",
+  "data": [
+    {
+      "startDate": 1768444469154,
+      "priority": 0,
+      "linkUrl": "https://webshop.browndust2.global/CT/events/attend-event/",
+      "imageUrl": "https://webshop.browndust2.global/public/uploads/1768437361471-260107_BD2_웹상점_출석이벤트배너_웹상점_01POPUP_04TC_640x920.jpg",
+      "popupId": "5db163a7-6b81-4fda-a3d8-21dc262f764d",
+      "updatedAt": "2026-01-15T02:35:00.955Z",
+      "endAt": 1770822000000,
+      "country": "zh-TW",
+      "startAt": 1768402800000,
+      "createdAt": 1768437383528,
+      "mobileImageUrl": null,
+      "status": "ACTIVE"
+    },
+    {
+      "imageUrl": "https://webshop.browndust2.global/public/uploads/1768437395465-260107_BD2_웹상점_출석이벤트배너_웹상점_01POPUP_05SC_640x920.jpg",
+      "linkUrl": "https://webshop.browndust2.global/CS/events/attend-event/",
+      "country": "zh-CN",
+      "popupId": "b248e5b7-9990-4c98-9e05-32009a3636b9",
+      "priority": 0,
+      "updatedAt": "2026-01-15T02:35:21.939Z",
+      "endAt": 1770822000000,
+      "startDate": 1768444516305,
+      "startAt": 1768402800000,
+      "createdAt": 1768437404289,
+      "mobileImageUrl": null,
+      "status": "ACTIVE"
+    },
+    {
+      "updatedAt": "2026-01-15T02:35:34.476Z",
+      "priority": 0,
+      "country": "en-US",
+      "imageUrl": "https://webshop.browndust2.global/public/uploads/1768437295993-260107_BD2_웹상점_출석이벤트배너_웹상점_01POPUP_02EN_640x920.jpg",
+      "startDate": 1768444525648,
+      "popupId": "86627f00-51fe-4845-adb8-55975463654f",
+      "linkUrl": "https://webshop.browndust2.global/en-US/events/attend-event/",
+      "createdAt": 1768437307169,
+      "endAt": 1770822000000,
+      "startAt": 1768402800000,
+      "mobileImageUrl": null,
+      "status": "ACTIVE"
+    },
+    {
+      "priority": 0,
+      "createdAt": 1768437338832,
+      "updatedAt": "2026-01-15T02:35:46.354Z",
+      "imageUrl": "https://webshop.browndust2.global/public/uploads/1768437316009-260107_BD2_웹상점_출석이벤트배너_웹상점_01POPUP_03JP_640x920.jpg",
+      "linkUrl": "https://webshop.browndust2.global/ja-JP/events/attend-event/",
+      "popupId": "399ea917-a65e-40ff-b6a6-e7e2fb92da77",
+      "endAt": 1770822000000,
+      "country": "ja-JP",
+      "startAt": 1768402800000,
+      "startDate": 1768444537655,
+      "mobileImageUrl": null,
+      "status": "ACTIVE"
+    },
+    {
+      "updatedAt": "2026-01-15T02:36:05.176Z",
+      "priority": 0,
+      "country": "ko-KR",
+      "linkUrl": "https://webshop.browndust2.global/ko-KR/events/attend-event/",
+      "endAt": 1770822000000,
+      "startAt": 1768402800000,
+      "popupId": "d5c9daed-ec90-44b1-adb6-3bcf24f96bdf",
+      "startDate": 1768444561687,
+      "createdAt": 1768437282334,
+      "mobileImageUrl": null,
+      "status": "ACTIVE",
+      "imageUrl": "https://webshop.browndust2.global/public/uploads/1768437257425-260107_BD2_웹상점_출석이벤트배너_웹상점_01POPUP_01KR_640x920.jpg"
+    }
+  ]
+}
+接口：获取活动规则
+请求：fetch("https://bd2-webshop-api.bd2.pmang.cloud/api/event/event-info", {
+  "headers": {
+    "accept": "application/json",
+    "accept-language": "zh-CN,zh;q=0.9",
+    "priority": "u=1, i",
+    "sec-ch-ua": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "cross-site"
+  },
+  "referrer": "https://webshop.browndust2.global/",
+  "body": null,
+  "method": "GET",
+  "mode": "cors",
+  "credentials": "omit"
+});
+响应：{
+  "data": {
+    "attendanceCount": -1,
+    "isLastAttendance": false,
+    "success": true,
+    "errorType": 0,
+    "errorMsg": "",
+    "requestId": "fed5468e-6a9b-4df1-ae0d-ca4e8c39bf00",
+    "scheduleInfo": {
+      "startDate": "2026-01-15 10:00:00",
+      "endDate": "2026-02-12 08:59:59",
+      "eventScheduleId": 9,
+      "rewardInfoList": [
+        {
+          "day": 1,
+          "itemType": 1000,
+          "itemId": 6
+        },
+        {
+          "day": 2,
+          "itemType": 9,
+          "itemId": 800110
+        },
+        {
+          "day": 3,
+          "itemType": 9,
+          "itemId": 800111
+        },
+        {
+          "day": 4,
+          "itemType": 9,
+          "itemId": 800112
+        },
+        {
+          "day": 5,
+          "itemType": 9,
+          "itemId": 800113
+        },
+        {
+          "day": 6,
+          "itemType": 9,
+          "itemId": 800114
+        },
+        {
+          "day": 7,
+          "itemType": 9,
+          "itemId": 800115
+        }
+      ]
+    }
+  }
+}
+接口：活动签到
+请求：fetch("https://bd2-webshop-api.bd2.pmang.cloud/api/event/attend-reward", {
+  "headers": {
+    "accept": "application/json",
+    "accept-language": "zh-CN,zh;q=0.9",
+    "authorization": "Bearer 4eb0643a81a4c404895dc403950854f60b2b9fcc7d546976ce80f5f691bb3f70173c118e18fa514cdf827e52122409fb37ca68691bcce3d4986ce113fa72216c974ff3cf0842a5a0dcb1ad01c469e1a15d549962933884109fc4ae6ffdf7e906bbad8ecccf3f332399bca5071747b91d34669fe1cb89c5d014cb2d39f63936356685e597e59186d428f059c5854922ca5ff784a8186d94a52a27779ac3ee77eeb9400069a4d922a11506393186ffb69fce0411822e2eb538a69b0dcda9fbb12189882c521f3d23f9b935b7148c8b168ed8177344e09720102a5455b5666d539aa93ca264f651c4b7e066630c798e37315fd17d459eb670ea9c546ab02678616cd1281137bd09e0fa9170f68a74cb6fe7f4fecc0b462698eb6b440d8ceaba85211253ab530de67ce46301335a8f592a379e197f6bcd05ccd05b35893fe944594a5898c556a58241796fb0cb97c0219d181dabb43ae81b0a6583fb7c2d3df6aca6b7ba46d2398ebc03e91721896696dc0a0cd70ed2b26f5287375658eaf3b4a9193892a5b70e883dea8ee568394d78dbf81862c726370aaf23cb5208a9259960f2c39a67f781a27e38076a8bee08c96ccfbf55e0beb4a4e973f889e2b5c6ac2fe9e887ec32f8aaacd45b45e6ff927fd1f666cb9f7c27f2e620e99f2bcd5ab33edf6572d0a98ec9fbeb271a63266011967ecb8efa694990fe65a122403d351e91cc016b8ae8986caea7355b6e193c95d8462b14dddc1d47d3c544b4bf05cd4314f42cd2c9d16fa22feea9521112fa6e9b41e9cc8375725cb82fbb7a3ca80b34b92120db984549114c6476356b00ca5c3a015a29424fbd20d7f187452fa2e99e8df6f2e40f1d6355c6845e9d8c743fa999007daae1d624c2310b528855a9fe7a835bd27f15376e86ea5e2ab7ddcc5f2197706f922e65a808daf35d4683c130fc7590e8bea0c3d3ce806340b6a43ee5b8ab0e6e0c86074820cc0fe44196545ed82b7ae65a5814491bd830a29fa34c90bcf2cea64ec3a9497f070320ca31c53a538ade58f42b6e4207a3b1dc7d9a635805018cb2e11388ba04933b1460abeb1168c5d78c8c1494a2db441ce99ee52573c32374a7b8da0cbdfe115379e8af23b01eba96bca5ba9a0826c514a0f964531963edc6",
+    "content-type": "application/json",
+    "priority": "u=1, i",
+    "sec-ch-ua": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "cross-site"
+  },
+  "referrer": "https://webshop.browndust2.global/",
+  "body": "{\"eventScheduleId\":9}",
+  "method": "POST",
+  "mode": "cors",
+  "credentials": "include"
+});
+响应：
+签到成功：{
+  "data": {
+    "success": true,
+    "errorType": 0,
+    "errorMsg": "",
+    "requestId": "5b261f20-2da8-40a5-902a-7eead25aa8a7",
+    "rewardInfo": {
+      "itemType": 1000,
+      "itemId": 6
+    },
+    "userInfo": {
+      "attendanceCount": 1,
+      "lastAttendanceDate": "2026-01-16 00:22:55"
+    }
+  }
+}
+重复签到：{
+    "data": {
+        "success": false,
+        "errorType": 5,
+        "errorMsg": "Already reward today. (last_attendance_date: 2026-01-16 00:22:55)",
+        "requestId": "bff816b5-ceda-4f39-8b68-f217951abd2e",
+        "rewardInfo": {
+            "itemType": 0,
+            "itemId": 0
+        },
+        "userInfo": {
+            "attendanceCount": 0,
+            "lastAttendanceDate": ""
+        }
+    }
+}
+eventScheduleId=8，即签到过时活动时：{
+    "data": {
+        "success": false,
+        "errorType": 6,
+        "errorMsg": "Not exist reward day. (attendance_count: 8)",
+        "requestId": "ef431399-f752-4b42-a395-2b0b2f340f5c",
+        "rewardInfo": {
+            "itemType": 0,
+            "itemId": 0
+        },
+        "userInfo": {
+            "attendanceCount": 0,
+            "lastAttendanceDate": ""
+        }
+    }
+}
+eventScheduleId=10，即签到不存在的活动时：{
+    "data": {
+        "success": false,
+        "errorType": 4,
+        "errorMsg": "Not found event schedule. (eventScheduleId: 10)",
+        "requestId": "afdcbf89-82f3-41b7-9751-dca0ba70a542",
+        "rewardInfo": {
+            "itemType": 0,
+            "itemId": 0
+        },
+        "userInfo": {
+            "attendanceCount": 0,
+            "lastAttendanceDate": ""
+        }
+    }
+}
+接口：获取当前用户的签到信息
+请求：fetch("https://bd2-webshop-api.bd2.pmang.cloud/api/event/event-user-info", {
+  "headers": {
+    "accept": "application/json",
+    "accept-language": "zh-CN,zh;q=0.9",
+    "authorization": "Bearer 4eb0643a81a4c404895dc403950854f60b2b9fcc7d546976ce80f5f691bb3f70173c118e18fa514cdf827e52122409fb37ca68691bcce3d4986ce113fa72216c974ff3cf0842a5a0dcb1ad01c469e1a15d549962933884109fc4ae6ffdf7e906bbad8ecccf3f332399bca5071747b91d34669fe1cb89c5d014cb2d39f63936356685e597e59186d428f059c5854922ca5ff784a8186d94a52a27779ac3ee77eeb9400069a4d922a11506393186ffb69fce0411822e2eb538a69b0dcda9fbb12189882c521f3d23f9b935b7148c8b168ed8177344e09720102a5455b5666d539aa93ca264f651c4b7e066630c798e37315fd17d459eb670ea9c546ab02678616cd1281137bd09e0fa9170f68a74cb6fe7f4fecc0b462698eb6b440d8ceaba85211253ab530de67ce46301335a8f592a379e197f6bcd05ccd05b35893fe944594a5898c556a58241796fb0cb97c0219d181dabb43ae81b0a6583fb7c2d3df6aca6b7ba46d2398ebc03e91721896696dc0a0cd70ed2b26f5287375658eaf3b4a9193892a5b70e883dea8ee568394d78dbf81862c726370aaf23cb5208a9259960f2c39a67f781a27e38076a8bee08c96ccfbf55e0beb4a4e973f889e2b5c6ac2fe9e887ec32f8aaacd45b45e6ff927fd1f666cb9f7c27f2e620e99f2bcd5ab33edf6572d0a98ec9fbeb271a63266011967ecb8efa694990fe65a122403d351e91cc016b8ae8986caea7355b6e193c95d8462b14dddc1d47d3c544b4bf05cd4314f42cd2c9d16fa22feea9521112fa6e9b41e9cc8375725cb82fbb7a3ca80b34b92120db984549114c6476356b00ca5c3a015a29424fbd20d7f187452fa2e99e8df6f2e40f1d6355c6845e9d8c743fa999007daae1d624c2310b528855a9fe7a835bd27f15376e86ea5e2ab7ddcc5f2197706f922e65a808daf35d4683c130fc7590e8bea0c3d3ce806340b6a43ee5b8ab0e6e0c86074820cc0fe44196545ed82b7ae65a5814491bd830a29fa34c90bcf2cea64ec3a9497f070320ca31c53a538ade58f42b6e4207a3b1dc7d9a635805018cb2e11388ba04933b1460abeb1168c5d78c8c1494a2db441ce99ee52573c32374a7b8da0cbdfe115379e8af23b01eba96bca5ba9a0826c514a0f964531963edc6",
+    "priority": "u=1, i",
+    "sec-ch-ua": "\"Google Chrome\";v=\"143\", \"Chromium\";v=\"143\", \"Not A(Brand\";v=\"24\"",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "\"Windows\"",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "cross-site"
+  },
+  "referrer": "https://webshop.browndust2.global/",
+  "body": null,
+  "method": "POST",
+  "mode": "cors",
+  "credentials": "include"
+});
+响应：
+签到前：{
+  "data": {
+    "attendanceCount": 0,
+    "isLastAttendance": false,
+    "scheduleInfo": {
+      "startDate": "2026-01-15 10:00:00",
+      "endDate": "2026-02-12 08:59:59",
+      "eventScheduleId": 9
+    }
+  }
+}
+签到后：{
+  "data": {
+    "attendanceCount": 1,
+    "isLastAttendance": true,
+    "scheduleInfo": {
+      "startDate": "2026-01-15 10:00:00",
+      "endDate": "2026-02-12 08:59:59",
+      "eventScheduleId": 9
+    }
+  }
+}
