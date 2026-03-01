@@ -1,13 +1,11 @@
 import { BaseTaskHandler, Task } from './types';
 import type { Env } from '../../env';
+import { runEventAttendForAll } from '../../services/bd2ActionService';
 
 export class EventParticipateHandler extends BaseTaskHandler {
-  async handle(task: Task, env: Env): Promise<any> {
-    // TODO: 实现活动参与业务逻辑
-    // 1. 查询所有活跃的活动
-    // 2. 对每个活跃账号调用 BD2 活动参与 API
-    // 3. 将结果写入 event_participation_logs
-    console.log(`[EventParticipateHandler] 执行活动参与任务，载荷:`, task.payload);
-    return { handler: 'EVENT_PARTICIPATE', status: 'skeleton' };
+  async handle(_task: Task, env: Env): Promise<unknown> {
+    const result = await runEventAttendForAll(env.DB);
+    console.log(`[EventParticipateHandler] 完成。总计=${result.total} 成功=${result.succeeded} 已完成=${result.alreadyCompleted} 失败=${result.failed}`);
+    return result;
   }
 }

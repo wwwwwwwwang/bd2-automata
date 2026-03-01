@@ -1,13 +1,11 @@
 import { BaseTaskHandler, Task } from './types';
 import type { Env } from '../../env';
+import { runWeeklyAttendForAll } from '../../services/bd2ActionService';
 
 export class WeeklyAttendHandler extends BaseTaskHandler {
-  async handle(task: Task, env: Env): Promise<any> {
-    // TODO: 实现每周签到业务逻辑
-    // 1. 查询所有活跃的游戏账号
-    // 2. 对每个账号调用 BD2 每周签到 API
-    // 3. 将结果写入 weekly_attendance_logs
-    console.log(`[WeeklyAttendHandler] 执行每周签到任务，载荷:`, task.payload);
-    return { handler: 'WEEKLY_ATTEND', status: 'skeleton' };
+  async handle(_task: Task, env: Env): Promise<unknown> {
+    const result = await runWeeklyAttendForAll(env.DB);
+    console.log(`[WeeklyAttendHandler] 完成。总计=${result.total} 成功=${result.succeeded} 已完成=${result.alreadyCompleted} 失败=${result.failed}`);
+    return result;
   }
 }
