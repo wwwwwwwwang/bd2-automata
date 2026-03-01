@@ -11,7 +11,7 @@ const serviceMocks = vi.hoisted(() => ({
   deleteLog: vi.fn(),
 }));
 
-vi.mock('../../services/logService', () => serviceMocks);
+vi.mock('../../services/taskLogService', () => serviceMocks);
 
 describe('task-logs route contracts', () => {
   const env = {

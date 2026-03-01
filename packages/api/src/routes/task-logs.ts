@@ -1,6 +1,6 @@
 import { Hono } from 'hono';
 import type { Env } from '../env';
-import { findLogs, deleteLog } from '../services/logService';
+import { findLogs, deleteLog } from '../services/taskLogService';
 import { validate } from '../utils/validation';
 import { paginationQuerySchema } from '@bd2-automata/shared';
 import { success } from '../utils/response';
