@@ -3,6 +3,7 @@ import { validate } from '../utils/validation';
 import { createGameAccountSchema, updateGameAccountSchema, paginationQuerySchema } from '@bd2-automata/shared';
 import type { Env } from '../env';
 import { findGameAccounts, findGameAccountById, createGameAccount, updateGameAccount, deleteGameAccount } from '../services/gameAccountService';
+import { performDailyAttend, performWeeklyAttend, performEventAttend, performRedeemCoupons } from '../services/bd2ActionService';
 import { success } from '../utils/response';
 import { parseId } from '../utils/id';
 

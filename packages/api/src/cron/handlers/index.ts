@@ -18,7 +18,7 @@ const handlerMap: Record<TaskType, BaseTaskHandler> = {
   EMAIL_PROCESS: new EmailProcessHandler(),
 };
 
-export async function dispatchToHandler(task: Task, env: Env): Promise<void> {
+export async function dispatchToHandler(task: Task, env: Env): Promise<unknown> {
   if (!isTaskType(task.taskType)) {
     throw new Error(`No handler found for task type: ${task.taskType}`);
   }
@@ -30,5 +30,5 @@ export async function dispatchToHandler(task: Task, env: Env): Promise<void> {
     throw new Error(`任务 ${task.id} (${task.taskType}) 前置检查未通过，跳过执行。`);
   }
 
-  await handler.handle(task, env);
+  return handler.handle(task, env);
 }

@@ -4,6 +4,8 @@ import { tasks, createTaskSchema, updateTaskSchema, z } from '@bd2-automata/shar
 import type { PaginationQuery } from '@bd2-automata/shared';
 import { paginate } from '../utils/pagination';
 import { HTTPException } from 'hono/http-exception';
+import { dispatchToHandler } from '../cron/handlers';
+import type { Env } from '../env';
 
 export const findTasks = async (d1: D1Database, pagination: PaginationQuery) => {
   const db = getDb(d1);
