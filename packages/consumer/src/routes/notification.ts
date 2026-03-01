@@ -1,13 +1,34 @@
 import { Hono } from 'hono';
 import type { Env } from '../env';
+import { dispatchConsumerTask } from '../services/dispatcher';
 
 const notificationRoutes = new Hono<{ Bindings: Env }>();
 
-// 发送通知（预留） — 当前由占位路由响应，后续再接入实际发送能力
 notificationRoutes.post('/send-notification', async (c) => {
-  // TODO: 实现通知发送逻辑
-  // 接收 body 中的通知参数，发送邮件/推送
-  return c.json({ status: 'ok' });
+  const rawBody = await c.req.text();
+  let payload: unknown = undefined;
+
+  if (rawBody.trim().length > 0) {
+    try {
+      payload = JSON.parse(rawBody);
+    } catch {
+      return c.json({ status: 'error', taskType: 'NOTIFICATION_SEND', error: '请求体必须是合法 JSON' }, 400);
+    }
+  }
+
+  try {
+    const result = await dispatchConsumerTask(c.env, 'NOTIFICATION_SEND', payload);
+    return c.json(result);
+  } catch (error: any) {
+    return c.json(
+      {
+        status: 'error',
+        taskType: 'NOTIFICATION_SEND',
+        error: error?.message ?? '发送通知失败',
+      },
+      500,
+    );
+  }
 });
 
 export default notificationRoutes;

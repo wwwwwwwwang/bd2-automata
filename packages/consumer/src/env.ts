@@ -3,3 +3,5 @@ export type Env = {
   SELF: Service;
   RESEND_API_KEY: string;
 };
+
+export type ConsumerTaskType = 'EMAIL_PROCESS' | 'NOTIFICATION_SEND';
