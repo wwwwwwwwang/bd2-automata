@@ -86,12 +86,17 @@ export const gameAccountsRelations = relations(gameAccounts, ({ one, many }) => 
   weeklyAttendanceLogs: many(weeklyAttendanceLogs),
   redemptionLogs: many(redemptionLogs),
   eventParticipationLogs: many(eventParticipationLogs),
+  tasks: many(tasks),
 }));
 
 // ===================================================================
 // Tasks & Logs
 // ===================================================================
-export const tasksRelations = relations(tasks, ({ many }) => ({
+export const tasksRelations = relations(tasks, ({ one, many }) => ({
+  gameAccount: one(gameAccounts, {
+    fields: [tasks.accountId],
+    references: [gameAccounts.id],
+  }),
   taskLogs: many(taskLogs),
 }));
 

@@ -14,6 +14,10 @@ export type EmailQueueStatus = typeof EMAIL_QUEUE_STATUS[number];
 export const EMAIL_TYPE = ['password_reset', 'token_expired', 'system_notify'] as const;
 export type EmailType = typeof EMAIL_TYPE[number];
 
+// 任务类型
+export const TASK_TYPES = ['DAILY_ATTEND', 'WEEKLY_ATTEND', 'GIFT_CODE_REDEEM', 'EVENT_PARTICIPATE', 'EMAIL_PROCESS'] as const;
+export type TaskType = typeof TASK_TYPES[number];
+
 // 日志状态
 export const LOG_STATUS = ['success', 'failure', 'skipped'] as const;
 export type LogStatus = typeof LOG_STATUS[number];

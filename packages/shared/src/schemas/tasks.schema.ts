@@ -1,9 +1,9 @@
 import { z } from 'zod';
-import { TASK_STATUS } from '../enums';
+import { TASK_STATUS, TASK_TYPES } from '../enums';
 
 // Zod schema for creating a task, aligned with the new database schema
 export const createTaskSchema = z.object({
-  taskType: z.string().min(1, { message: 'Task type cannot be empty' }),
+  taskType: z.enum(TASK_TYPES, { message: 'Task type is invalid' }),
   payload: z.record(z.unknown()).optional().default({}),
 });
 
