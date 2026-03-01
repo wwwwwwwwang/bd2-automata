@@ -114,6 +114,7 @@ CREATE TABLE `automata_task_logs` (
 	`message` text,
 	`details` text,
 	`executed_at` text DEFAULT (CURRENT_TIMESTAMP) NOT NULL,
+	`is_deleted` integer DEFAULT false NOT NULL,
 	FOREIGN KEY (`task_id`) REFERENCES `automata_task_queue`(`id`) ON UPDATE no action ON DELETE set null,
 	FOREIGN KEY (`game_account_id`) REFERENCES `automata_game_accounts`(`id`) ON UPDATE no action ON DELETE cascade
 );

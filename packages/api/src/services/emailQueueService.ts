@@ -1,5 +1,5 @@
 import { getDb } from '../db/drizzle';
-import { desc, eq, sql } from 'drizzle-orm';
+import { and, desc, eq, sql } from 'drizzle-orm';
 import { emailQueue, emailStats, emailTemplates } from '@bd2-automata/shared';
 import { sendEmail } from './resendService';
 import type { PaginationQuery } from '@bd2-automata/shared';
@@ -7,8 +7,10 @@ import { paginate } from '../utils/pagination';
 
 export const findEmailQueue = async (d1: D1Database, pagination: PaginationQuery) => {
   const db = getDb(d1);
-  const query = db.select().from(emailQueue).orderBy(desc(emailQueue.createdAt));
-  const countSql = sql`SELECT count(*) as count FROM ${emailQueue}`;
+  const query = db.select().from(emailQueue)
+    .where(eq(emailQueue.isDeleted, false))
+    .orderBy(desc(emailQueue.createdAt));
+  const countSql = sql`SELECT count(*) as count FROM ${emailQueue} WHERE is_deleted = 0`;
   return paginate(db, query, countSql, pagination);
 };
 
@@ -19,7 +21,7 @@ const renderTemplate = (html: string, vars: Record<string, unknown>): string => 
 export const processEmailQueue = async (d1: D1Database, apiKey: string) => {
   const db = getDb(d1);
   const emailsToSend = await db.query.emailQueue.findMany({
-    where: eq(emailQueue.status, 'pending'),
+    where: and(eq(emailQueue.status, 'pending'), eq(emailQueue.isDeleted, false)),
     limit: 10,
   });
 
@@ -33,7 +35,7 @@ export const processEmailQueue = async (d1: D1Database, apiKey: string) => {
 
       if (email.templateId) {
         const template = await db.query.emailTemplates.findFirst({
-          where: eq(emailTemplates.id, email.templateId),
+          where: and(eq(emailTemplates.id, email.templateId), eq(emailTemplates.isDeleted, false)),
         });
         if (template) {
           const vars = (email.templateVars ?? {}) as Record<string, unknown>;
@@ -50,7 +52,7 @@ export const processEmailQueue = async (d1: D1Database, apiKey: string) => {
         resendEmailId: result?.id ?? null,
         sentAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
-      }).where(eq(emailQueue.id, email.id));
+      }).where(and(eq(emailQueue.id, email.id), eq(emailQueue.isDeleted, false)));
       sentCount++;
     } catch (error: any) {
       const retryCount = (email.retryCount ?? 0) + 1;
@@ -59,7 +61,7 @@ export const processEmailQueue = async (d1: D1Database, apiKey: string) => {
         retryCount,
         errorMsg: error.message ?? String(error),
         updatedAt: new Date().toISOString(),
-      }).where(eq(emailQueue.id, email.id));
+      }).where(and(eq(emailQueue.id, email.id), eq(emailQueue.isDeleted, false)));
       if (retryCount >= 3) failedCount++;
     }
   }

@@ -67,6 +67,7 @@ export const handleResendWebhook = async (
     and(
       eq(emailQueue.resendEmailId, emailId),
       inArray(emailQueue.status, allowedFrom as any),
+      eq(emailQueue.isDeleted, false),
     ),
   ).returning({ id: emailQueue.id });
 

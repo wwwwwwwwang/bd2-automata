@@ -13,4 +13,5 @@ export const taskLogs = sqliteTable('automata_task_logs', {
   message: text('message'),
   details: text('details', { mode: 'json' }), // 存储详细信息，如 API 响应
   executedAt: text('executed_at').notNull().default(sql`(CURRENT_TIMESTAMP)`),
+  isDeleted: integer('is_deleted', { mode: 'boolean' }).notNull().default(false),
 });
