@@ -1,9 +1,14 @@
 import { and, eq, sql } from 'drizzle-orm';
-import { cronConfigs, tasks } from '@bd2-automata/shared';
+import { cronConfigs, tasks, TASK_TYPES } from '@bd2-automata/shared';
 import { isCronMatchNow, calculateNextRetry } from './utils';
 import { dispatchToHandler } from './handlers';
 import { getDb } from '../db/drizzle';
 import type { Env } from '../env';
+
+type ScheduledTaskType = typeof TASK_TYPES[number];
+
+const isScheduledTaskType = (value: string): value is ScheduledTaskType =>
+  (TASK_TYPES as readonly string[]).includes(value);
 
 export async function scheduled(event: ScheduledEvent, env: Env, ctx: ExecutionContext): Promise<void> {
   const db = getDb(env.DB);
@@ -18,6 +23,11 @@ export async function scheduled(event: ScheduledEvent, env: Env, ctx: ExecutionC
 
     for (const config of configs) {
       if (isCronMatchNow(config.cronExpression)) {
+        if (!isScheduledTaskType(config.taskType)) {
+          console.warn(`跳过无效 taskType 配置: ${config.taskType}`);
+          continue;
+        }
+
         // 去重：检查是否已存在同类型的 pending 任务
         const existing = await db.select({ id: tasks.id })
           .from(tasks)

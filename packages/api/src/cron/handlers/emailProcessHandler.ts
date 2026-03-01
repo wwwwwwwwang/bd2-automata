@@ -1,12 +1,9 @@
-import { BaseTaskHandler } from './types';
+import { BaseTaskHandler, Task } from './types';
 import type { Env } from '../../env';
-import { tasks } from '@bd2-automata/shared';
 import { processEmailQueue } from '../../services/emailQueueService';
 
 const EMAIL_PROCESS_MODE_API = 'api';
 const EMAIL_PROCESS_MODE_CONSUMER = 'consumer';
-
-type Task = typeof tasks.$inferSelect;
 
 export class EmailProcessHandler extends BaseTaskHandler {
   async handle(task: Task, env: Env): Promise<any> {

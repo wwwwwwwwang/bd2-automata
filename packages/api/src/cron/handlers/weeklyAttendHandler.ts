@@ -1,8 +1,5 @@
-import { BaseTaskHandler } from './types';
+import { BaseTaskHandler, Task } from './types';
 import type { Env } from '../../env';
-import { tasks } from '@bd2-automata/shared';
-
-type Task = typeof tasks.$inferSelect;
 
 export class WeeklyAttendHandler extends BaseTaskHandler {
   async handle(task: Task, env: Env): Promise<any> {

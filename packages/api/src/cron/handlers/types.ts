@@ -1,6 +1,7 @@
-import { tasks } from '@bd2-automata/shared';
+import { tasks, TASK_TYPES } from '@bd2-automata/shared';
 import type { Env } from '../../env';
 
+export type TaskType = typeof TASK_TYPES[number];
 export type Task = typeof tasks.$inferSelect;
 
 export abstract class BaseTaskHandler {
